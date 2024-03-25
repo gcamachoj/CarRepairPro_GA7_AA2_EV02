@@ -37,7 +37,7 @@ Se cargará la pàgina index.html.
 
 
 ![Esquema base de datos](static/complementos/ESQUEMA%20RELACIONAL%20DE%20BASE%20DE%20DATOS.png)
-
+<figcaption>Modelo Relacional de base de datos</figcaption>
 
 8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql
 ), incluido en la carpeta static/complementos:
@@ -46,7 +46,7 @@ Se cargará la pàgina index.html.
 10. Modifique la parametrización de conexión a la base de datos en el archivo app.py en la linea:
 
 ***app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'***  
-<figcaption>Modelo Relacional de base de datos</figcaption>
+
 donde:
 
 **root(1)** = usuario
