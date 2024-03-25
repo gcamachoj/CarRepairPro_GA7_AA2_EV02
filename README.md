@@ -16,6 +16,13 @@ ejecutar:
 
 Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 
+hasta aqui el proceso es similar al de la siguiente imagen:
+
+![Esquema base de datos](static/complementos/crear_entorno_python.PNG)
+
+
+
+
 3. clonar el repositorio. Ejecutar en linea de comandos:
 
 ***git clone https://github.com/gcamachoj/CarRepair_pro_crud.git***
