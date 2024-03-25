@@ -16,13 +16,15 @@ Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 3. clonar el repositorio: 
 git clone https://github.com/gcamachoj/CarRepair_pro_crud.git
 
-4. instalar las dependencias:
+4. Ingresar a la carpeta CarRepair_pro_crud.
+
+5. instalar las dependencias:
 pip install -r requirements.txt
 
-5. ejecutar la aplicacion:
+6. ejecutar la aplicacion:
 flask run
 
-6. El archivo index, genera informacion explicativa del aplicativo.
+7. El archivo index, genera informacion explicativa sobre el funcionamiento de esta versión del aplicativo.
 
 
 
