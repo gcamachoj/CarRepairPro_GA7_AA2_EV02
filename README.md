@@ -36,7 +36,7 @@ Se cargará la pàgina index.html.
 ## Instalación de la base de datos ##
 
 
-![Texto alternativo](static/complementos/ESQUEMA RELACIONAL DE BASE DE DATOS.png)
+![Esquema base de datos](static/complementos/ESQUEMA%20RELACIONAL%20DE%20BASE%20DE%20DATOS.png)
 
 
 8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql
