@@ -12,18 +12,21 @@ Cree una carpeta para instalar el proyecto. ingrese a la carpeta creada y ejecut
 
 2. Activar el entorno virtual:
 ejecutar: 
-*venv\Scripts\activate*
+***venv\Scripts\activate***
 Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 3. clonar el repositorio. Ejecutar en linea de comandos:
-*git clone https://github.com/gcamachoj/CarRepair_pro_crud.git*
+
+***git clone https://github.com/gcamachoj/CarRepair_pro_crud.git***
 
 4. Ingresar a la carpeta CarRepair_pro_crud.
 
 5. instalar las dependencias:
-*pip install -r requirements.txt*
+
+***pip install -r requirements.txt***
 
 6. ejecutar la aplicacion. Ejecutar:
-*flask run*
+
+***flask run***
 
 Se cargará la pàgina index.html.
 
