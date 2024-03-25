@@ -33,8 +33,67 @@ Se cargará la pàgina index.html.
 
 7. El archivo index, contiene informacion explicativa sobre el funcionamiento de esta versión del aplicativo.
 
+## Instalación de la base de datos ##
 
+8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql
+), incluido en la carpeta static/complementos:
 
+9. Ejecute el script el cual creará una base de datos denominada taller.
+10. Modifique la parametrización de conexión a la base de datos en el archivo app.py en la linea:
+
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'  
+
+donde:
+
+root(1) = usuario
+root(2) = contraseña
+localhost = url base de datos
+taller = nombre de la base de datos
+
+Una vez configurada la conexión a la base de datos puede proceder a las validaciones de CRUDs.
+
+## VALIDACIONES DE CRUD ##
+
+Dado que se contiene una base de datos relacional pura en blanco, se debe ingresar primero datos de tablas secundarias.
+
+1. Crear registro de ciudad:
+desde linea de comandos ejecutar:
+***python crear_ciudad.py***
+Este archivo ejecuta la creación de la ciudad predeterminada en el script del archivo. Puede modificar el argumento en el final del archivo para incluir otra ciudad en la linea que contiene:
+
+***print(crear_ciudad('Bogota'))***
+Ingrese a las tablas de la base de datos para verificar los resultados.
+
+2. Crear tipo de Carrocería: la ejecución de este script genera un registro en la tabla ***TipoCarroceria***. Ejecute el comando: 
+***python crear_tipo_carroceria.py***
+
+Al igual que en el script anterior y los siguientes puede cambiar los argumentos del script para ingresar un registro con valores diferentes"
+
+3. Ingresar registro en tabla Marcas:  para ingresar el primer registro en la tabla marcas ejecute:
+***python crear_marca.py***
+
+4. Ingresar Tipo de Cliente: ingrese el siguiente comando para ingresar un tipo de cliente:
+***python crear_tipo_cliente.py***
+
+Ahora que se realizaron pruebas de creación de registros, se realizarán pruebas de lectura y modificación.
+
+Para ello primero creemos un registro en la tabla cliente. Ejecutar:
+
+***python crear_cliente.py***
+
+Para listar desde la aplicación los clientes ingresados, ingresamos a la pagina ***localhost:5000/clientes***.
+
+Puede cambiar los parámetros del script para ingresar otros registros de cliente.
+
+5. Actualizar registros:
+Ejecute el comando:
+***python actualizar_cliente.py*** 
+Se actualizará el cliente 1 con los datos del script. Puede realizar cambios, teniendo en cuenta que el IdCliente corresponde al código de PrimaryKey del cliente que va a actualizar.
+
+6. Eliminar registro de cliente:
+Ejecute:
+***python eliminar_cliente.py 1***
+Se eliminará el cliente con primaryKey 1 de la base de datos. Liste nuevamente los clientes para comprobarlo.
 
 
 
