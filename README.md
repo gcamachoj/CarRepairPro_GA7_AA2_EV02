@@ -37,7 +37,7 @@ Se cargará la pàgina index.html.
 
 
 ![Esquema base de datos](static/complementos/ESQUEMA%20RELACIONAL%20DE%20BASE%20DE%20DATOS.png)
-<p align="center"><figcaption>Modelo Relacional de base de datos</figcaption></p>
+<figcaption>Modelo Relacional de base de datos</figcaption>
 
 8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql
 ), incluido en la carpeta static/complementos:
