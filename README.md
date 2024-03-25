@@ -56,6 +56,9 @@ Una vez configurada la conexión a la base de datos puede proceder a las validac
 
 Dado que se contiene una base de datos relacional pura en blanco, se debe ingresar primero datos de tablas secundarias.
 
+Esta versión de la aplicación se limita a pruebas de CRUD desde la línea de comandos ejecutando y modificando para ello scripts del código backend desde la consola, lo cual corresponde al alcance de la actividad a presentar.
+
+### CREACION DE REGISTROS EN BASE DE DATOS (CREATE)###
 1. Crear registro de ciudad:
 desde linea de comandos ejecutar:
 ***python crear_ciudad.py***
