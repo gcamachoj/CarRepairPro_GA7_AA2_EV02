@@ -41,24 +41,27 @@ Se cargará la pàgina index.html.
 9. Ejecute el script el cual creará una base de datos denominada taller.
 10. Modifique la parametrización de conexión a la base de datos en el archivo app.py en la linea:
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'  
+***app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'***  
 
 donde:
 
-root(1) = usuario
-root(2) = contraseña
-localhost = url base de datos
-taller = nombre de la base de datos
+**root(1)** = usuario
+
+**root(2)** = contraseña
+
+**localhost** = url base de datos
+
+**taller** = nombre de la base de datos
 
 Una vez configurada la conexión a la base de datos puede proceder a las validaciones de CRUDs.
 
-### Validación de funcionalidades CRUD ###
+## Validación de funcionalidades CRUD: ##
 
 Dado que se contiene una base de datos relacional pura en blanco, se debe ingresar primero datos de tablas secundarias.
 
 Esta versión de la aplicación se limita a pruebas de CRUD desde la línea de comandos ejecutando y modificando para ello scripts del código backend desde la consola, lo cual corresponde al alcance de la actividad a presentar.
 
-#### Creacion de registros (CREATE)####
+## Creacion de registros (CREATE)##
 1. Crear registro de ciudad:
 desde linea de comandos ejecutar:
 ***python crear_ciudad.py***
@@ -88,7 +91,7 @@ Para listar desde la aplicación los clientes ingresados, ingresamos a la pagina
 
 Puede cambiar los parámetros del script para ingresar otros registros de cliente.
 
-#### Actualizacion y Eliminación de registrods ####
+## Actualizacion y Eliminación de registrods ##
 5. Actualizar registros:
 Ejecute el comando:
 ***python actualizar_cliente.py*** 
