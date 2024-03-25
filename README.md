@@ -35,6 +35,10 @@ Se cargará la pàgina index.html.
 
 ## Instalación de la base de datos ##
 
+
+![Texto alternativo](static/complementos/ESQUEMA RELACIONAL DE BASE DE DATOS.png)
+
+
 8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql
 ), incluido en la carpeta static/complementos:
 
@@ -42,7 +46,7 @@ Se cargará la pàgina index.html.
 10. Modifique la parametrización de conexión a la base de datos en el archivo app.py en la linea:
 
 ***app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'***  
-
+<figcaption>Modelo Relacional de base de datos</figcaption>
 donde:
 
 **root(1)** = usuario
@@ -61,7 +65,7 @@ Dado que se contiene una base de datos relacional pura en blanco, se debe ingres
 
 Esta versión de la aplicación se limita a pruebas de CRUD desde la línea de comandos ejecutando y modificando para ello scripts del código backend desde la consola, lo cual corresponde al alcance de la actividad a presentar.
 
-## Creacion de registros (CREATE)##
+## Creacion de registros (CREATE): ##
 1. Crear registro de ciudad:
 desde linea de comandos ejecutar:
 ***python crear_ciudad.py***
@@ -91,7 +95,7 @@ Para listar desde la aplicación los clientes ingresados, ingresamos a la pagina
 
 Puede cambiar los parámetros del script para ingresar otros registros de cliente.
 
-## Actualizacion y Eliminación de registrods ##
+## Actualizacion y Eliminación de registros ##
 5. Actualizar registros:
 Ejecute el comando:
 ***python actualizar_cliente.py*** 
@@ -103,4 +107,4 @@ Ejecute:
 Se eliminará el cliente con primaryKey 1 de la base de datos. Liste nuevamente los clientes para comprobarlo.
 
 
-
+Hasta aquí todo lo contenido de la actividad en referencia.
