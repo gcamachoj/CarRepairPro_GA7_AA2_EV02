@@ -2,3 +2,30 @@
 
 Esta aplicacions consta de un backend elaborado Flask, el cual es un framework web ligero y versátil escrito en Python que se utiliza para crear aplicaciones web rápidas y escalables. Se complementa con la librería SQLAlchemy que proporciona una capa de abstracción sobre las bases de datos relacionales comportándose como un ORM (Mapeo Objeto-Relacional), para  interactuar con la base de datos utilizando objetos y consultas en lugar de escribir SQL directamente. La base de datos está elaborada en Mysql. En los complementos encontrará detalles sobre la base de datos y la estructura del desarrollo en general.
 
+
+## INSTRUCCIONES 
+
+1. Instale en su maquina un entorno virtual de python:
+Cree una carpeta para el proyecto. Dentro de dicha carpeta ejecute el comando:
+
+python -m venv venv
+
+2. Activar el entorno virtual:
+ejecutar venv\Scripts\activate
+
+3. clonar el repositorio: 
+git clone https://github.com/gcamachoj/CarRepair_pro_crud.git
+
+4. instalar las dependencias:
+pip install -r requirements.txt
+
+5. ejecutar la aplicacion:
+flask run
+
+6. El archivo index, genera informacion explicativa del aplicativo.
+
+
+
+
+
+
