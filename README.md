@@ -52,13 +52,13 @@ taller = nombre de la base de datos
 
 Una vez configurada la conexión a la base de datos puede proceder a las validaciones de CRUDs.
 
-## VALIDACIONES DE CRUD ##
+### Validación de funcionalidades CRUD ###
 
 Dado que se contiene una base de datos relacional pura en blanco, se debe ingresar primero datos de tablas secundarias.
 
 Esta versión de la aplicación se limita a pruebas de CRUD desde la línea de comandos ejecutando y modificando para ello scripts del código backend desde la consola, lo cual corresponde al alcance de la actividad a presentar.
 
-### CREACION DE REGISTROS EN BASE DE DATOS (CREATE)###
+#### Creacion de registros (CREATE)####
 1. Crear registro de ciudad:
 desde linea de comandos ejecutar:
 ***python crear_ciudad.py***
@@ -88,6 +88,7 @@ Para listar desde la aplicación los clientes ingresados, ingresamos a la pagina
 
 Puede cambiar los parámetros del script para ingresar otros registros de cliente.
 
+#### Actualizacion y Eliminación de registrods ####
 5. Actualizar registros:
 Ejecute el comando:
 ***python actualizar_cliente.py*** 
