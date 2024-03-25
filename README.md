@@ -6,7 +6,7 @@ Esta aplicacions consta de un backend elaborado Flask, el cual es un framework w
 ## INSTRUCCIONES 
 
 1. Instale en su maquina con Windows un entorno virtual de python:
-Cree una carpeta para instalar el proyecto. ingrese a la carpetacreada y ejecute el comando:
+Cree una carpeta para instalar el proyecto. ingrese a la carpeta creada y ejecute el comando:
 
 python -m venv venv
 
