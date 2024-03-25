@@ -13,6 +13,7 @@ Cree una carpeta para instalar el proyecto. ingrese a la carpeta creada y ejecut
 2. Activar el entorno virtual:
 ejecutar: 
 ***venv\Scripts\activate***
+
 Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 3. clonar el repositorio. Ejecutar en linea de comandos:
 
@@ -30,7 +31,7 @@ Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 
 Se cargará la pàgina index.html.
 
-7. El archivo index, genera informacion explicativa sobre el funcionamiento de esta versión del aplicativo.
+7. El archivo index, contiene informacion explicativa sobre el funcionamiento de esta versión del aplicativo.
 
 
 
