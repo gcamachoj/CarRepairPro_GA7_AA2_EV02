@@ -5,14 +5,14 @@ Esta aplicacions consta de un backend elaborado Flask, el cual es un framework w
 
 ## INSTRUCCIONES 
 
-1. Instale en su maquina un entorno virtual de python:
-Cree una carpeta para el proyecto. Dentro de dicha carpeta ejecute el comando:
+1. Instale en su maquina con Windows un entorno virtual de python:
+Cree una carpeta para instalar el proyecto. ingrese a la carpetacreada y ejecute el comando:
 
 python -m venv venv
 
 2. Activar el entorno virtual:
-ejecutar venv\Scripts\activate
-
+ejecutar: venv\Scripts\activate
+Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 3. clonar el repositorio: 
 git clone https://github.com/gcamachoj/CarRepair_pro_crud.git
 
