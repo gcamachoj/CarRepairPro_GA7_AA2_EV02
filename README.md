@@ -15,6 +15,7 @@ ejecutar:
 ***venv\Scripts\activate***
 
 Esto cambia el prompt de la linea de comando activando el ambiente virtual.
+
 3. clonar el repositorio. Ejecutar en linea de comandos:
 
 ***git clone https://github.com/gcamachoj/CarRepair_pro_crud.git***
@@ -29,7 +30,7 @@ Esto cambia el prompt de la linea de comando activando el ambiente virtual.
 
 ***flask run***
 
-Se cargará la pàgina index.html.
+Este comando creará la ruta del servidor. Ingrese dicha ruta en el explorador de internet.
 
 7. El archivo index, contiene informacion explicativa sobre el funcionamiento de esta versión del aplicativo.
 
@@ -39,10 +40,12 @@ Se cargará la pàgina index.html.
 ![Esquema base de datos](static/complementos/ESQUEMA%20RELACIONAL%20DE%20BASE%20DE%20DATOS.png)
 <figcaption>Modelo Relacional de base de datos</figcaption>
 
-8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql
-), incluido en la carpeta static/complementos:
+7.2. Cargue la carpeta creada en el IDE "visual studio code" o el ide de su preferencia. Posteriormente Abra una terminal de linea de comando nueva en la carpeta de CarRepair_pro_crud.
 
-9. Ejecute el script el cual creará una base de datos denominada taller.
+8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql), incluido en la carpeta static/complementos:
+
+9. Cargue el script en su aplicación de MySQL y ejecutelo. El scritp creará la base de datos "taller" con todas las tablas.  Actualice el listado de base de datos para verificar la nueva base de datos existente. Mantenga abierta la ventana de la aplicación de MySQL para validar los procedimientos CRUD.
+
 10. Modifique la parametrización de conexión a la base de datos en el archivo app.py en la linea:
 
 ***app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'***  
