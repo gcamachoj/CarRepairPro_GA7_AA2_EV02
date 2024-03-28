@@ -27,9 +27,9 @@ hasta aqui el proceso es similar al de la siguiente imagen:
 
 ***git clone https://github.com/gcamachoj/CarRepairPro_GA7_AA2_EV02.git***
 
-4. Ingresar a la carpeta CarRepairPro.
-
-5. instalar las dependencias:
+4. Ingresar a la carpeta CarRepairPro_GA7_AA2_EV02
+5. 
+6. instalar las dependencias:
 
 ***pip install -r requirements.txt***
 
