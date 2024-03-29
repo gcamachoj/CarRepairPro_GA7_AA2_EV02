@@ -37,6 +37,7 @@ header{
     flex-direction: row;
      background-color: rgb(245, 243, 243);
    max-width: 100%;
+   overflow: hidden;
 }
 
 .contenido .label-login{
@@ -105,7 +106,9 @@ width:100px;
 aside{
     width:20%;
     background-color: rgb(129, 148, 170);
-    height:100vh;
+    height: 1000px;
+    /*height:100vh;*/
+    min-height: 100%;/* Para que el aside se extienda a la altura del content */
     
     
     
@@ -113,6 +116,7 @@ aside{
 
 aside .contenido-aside{
     background-color: inherit;
+    min-height: 100%;/* Para que el aside se extienda a la altura del content */
     
 }
 
