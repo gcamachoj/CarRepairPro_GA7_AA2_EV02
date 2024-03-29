@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <title>CarRepairPro</title>
+</head>
+<body>
+    <aside> 
+        <div class="contenido-aside">
+            <div class="titulo-menu">
+                Menú
+            </div>
+          
+            <div class="linea-normal">
+            <a href="clientes.html">Gestión de Clientes</a>   
+            </div>
+            
+            <div class="linea-normal">
+                <a href="vehiculos.html">Gestión de Vehículos</a> 
+            </div>
+
+            <div class="linea-normal">
+                <a href="gestion_os.html">Gestión OS</a> 
+            </div>
+
+            <div class="linea-normal">
+                <a href="funcionarios.html">Gestión de Personal Interno</a> 
+            </div>
+            
+            <div class="linea-normal padre">
+                Parametrizaciones
+            </div>
+            
+            <div class="linea-normal">
+                <a href="consumibles.html">Maestro de Consumibles</a> 
+            </div>
+            <div class="linea-normal">
+                <a href="maestro_inventario.html">Maestro de Inventario</a> 
+            </div>
+
+            <div class="linea-normal" onclick="mensajeSalir()">
+                Cerrar sesión
+            </div>
+        </div> <!-- CIERRA DIV CONTENIDO ASIDE -->
+    </aside> <!-- CIERRE ASIDE -->
+
+    <!-- Contenido de la página -->
+    <div class="content">
+        {% block content %}
+        {% endblock %}
+    </div>
+</body>
+</html>

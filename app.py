@@ -83,10 +83,17 @@ def redirect_to_login():
 def login():
     return render_template('login.html')
 
+
+@app.route('/base')
+def base():
+    return render_template('base.html')
+
 @app.route('/clientes')
 def verClientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
     return render_template('clientes.html', clientes=clientes)
+
+
 
 #---------------------------------------------------------------------------
 #Ejecucion
