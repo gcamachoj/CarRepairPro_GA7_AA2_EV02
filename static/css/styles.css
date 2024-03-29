@@ -160,7 +160,10 @@ aside .contenido-aside{
 }
 
 
+.content .container .row table {
+    --bs-table-bg: none; /* Anula el valor de --bs-table-bg */
 
+}
 
 
 
