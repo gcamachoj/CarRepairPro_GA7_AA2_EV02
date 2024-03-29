@@ -1,7 +1,13 @@
 # Importación de librerias:
-    # marco de flask es el frameworrk backendy 
-    #SqlAlchemy Es el ORM para modelar los datos de la base de datos como objetos
-from flask import Flask, render_template
+    # * Flask:              Es el framework o marco de trabajo de base para el backend
+    # * Redirect:           Modulo de Flask  que se usa para redirigir a otra pagina
+    # * url_for:            Utiliería para tomar la url de otra ruta de la ap.
+    # * render_template:    Utilería que se usa para renderizar los archivos del front.
+    
+    # * SqlAlchemy: Librería de python como base ORM para modelar los datos de la base de y representarlos como como objetos dentro del backend. Bajo esta lbirería se crean las clases de cada componente de la lógica del negocio.
+
+
+from flask import Flask, redirect, url_for, render_template
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -69,14 +75,19 @@ class Marca(db.Model):
 
 
 #Rutas
+@app.route('/')
+def redirect_to_login():
+    return redirect(url_for('login')) 
+
+@app.route('/login')
+def login():
+    return render_template('login.html')
+
 @app.route('/clientes')
 def verClientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
     return render_template('clientes.html', clientes=clientes)
 
-@app.route('/')
-def home():
-   return render_template('index.html')
 #---------------------------------------------------------------------------
 #Ejecucion
     
