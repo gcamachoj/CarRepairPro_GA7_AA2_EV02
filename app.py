@@ -92,7 +92,7 @@ def base():
     return render_template('base.html')
 
 @app.route('/clientes')
-def verClientes():
+def clientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
     return render_template('clientes.html', clientes=clientes)
 

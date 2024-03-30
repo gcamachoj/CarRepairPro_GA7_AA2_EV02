@@ -32,6 +32,10 @@ header{
     height:100%;
 }   
 /*------ contenido ---------------*/
+
+.content{
+    width:100%;
+}
 .contenido{
     display: flex;
     flex-direction: row;
