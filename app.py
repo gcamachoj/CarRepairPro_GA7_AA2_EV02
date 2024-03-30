@@ -41,7 +41,7 @@ class TipoCliente(db.Model):
 # Creamos el modelo de datos para la tabla Cliente usando el ORM SQLAlchemy
 class Cliente(db.Model):
     __tablename__ = 'clientes'    
-    idCliente = db.Column(db.Integer, primary_key=True)
+    IdCliente = db.Column(db.Integer, primary_key=True)
     IdTipoCliente = db.Column(db.Integer, nullable = False)
     CC_NIT = db.Column(db.String(50), nullable = False)
     Nombres = db.Column(db.String(100), nullable = False)
@@ -91,12 +91,15 @@ def index():
 def base():
     return render_template('base.html')
 
+
 @app.route('/clientes')
 def clientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
     return render_template('clientes.html', clientes=clientes)
 
-
+@app.route('/crear_cliente')
+def crear_cliente():
+    return render_template('crear_cliente.html')
 
 #---------------------------------------------------------------------------
 #Ejecucion
