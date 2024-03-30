@@ -7,8 +7,16 @@
     <div class="head-buttons">
         <a class="btn btn-success btn-sm" href="{{ url_for('crear_cliente')}}">Crear</a>
     </div>
-   
-    <table class="table table-striped table-hover">
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+        {% for category, message in messages %}
+            <div class="alert alert-{{ category }}">
+                {{ message }}
+            </div>
+        {% endfor %}
+    {% endif %}
+    {% endwith %}
+    <table class="table table-responsive table-striped table-hover">
         <thead>
             <tr>
                 <th>ID</th>
@@ -31,4 +39,5 @@
         </tbody>
     </table>
 </div>
-    {% endblock %}
+
+{% endblock %}

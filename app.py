@@ -7,14 +7,14 @@
     # * SqlAlchemy: Librería de python como base ORM para modelar los datos de la base de y representarlos como como objetos dentro del backend. Bajo esta lbirería se crean las clases de cada componente de la lógica del negocio.
 
 
-from flask import Flask, redirect, url_for, render_template, request
+from flask import Flask, redirect, url_for, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 
 
 
 # Instanciamos la aplicacion
 app = Flask(__name__)  
-
+app.config['SECRET_KEY'] = 'SENA'
 # Configuramos la base de datos mysql 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'  
 
@@ -100,17 +100,19 @@ def crear_cliente():
 @app.route('/guardar_cliente', methods=["POST"])
 def guardar_cliente():
     cliente = Cliente(
-                      IdTIpoCliente=request.form['InputIdTipoCliente'], 
-                      CC_NIT = "444",
-                      Nombres = "abc", 
-                      IdCiudad="5", 
-                      Direccion="cra",
-                      email="rerre@sdsd.com",
-                      Telefono="444"                      
+                      IdTipoCliente=request.form['InputIdTipoCliente'], 
+                      CC_NIT = request.form['InputCC_Nit'],
+                      Nombres = request.form['InputNombres'], 
+                      IdCiudad= request.form['InputIdCiudad'], 
+                      Direccion=request.form['InputDireccion'],
+                      email=request.form['InputEmail'],
+                      telefono= request.form['InputTelefono']                
                       )
     db.session.add(cliente)
     db.session.commit()
+    flash('¡Cliente guardado exitosamente!', 'success')
     return redirect(url_for('clientes'))
+    
 #------------------------------------------------------
 #Ejecucion
     

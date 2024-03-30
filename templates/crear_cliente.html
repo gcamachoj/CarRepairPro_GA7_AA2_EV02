@@ -1,12 +1,13 @@
 {% extends "base.html" %}
 
 {% block content %}
+
 <div class="container">
                 
     <h1 class="text-center">
         Gestión de Clientes
     </h1>      
-        
+    
         <form action="/guardar_cliente" method="POST" class="form-principal">  
             
             <div class="campos">
@@ -15,42 +16,42 @@
                     <label for="" class="label">
                         Cod. Cliente
                     </label>
-                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente">
+                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente" disabled>
                 </div>
 
                 <div class="caja">
                     <label for="" class="label">
                         Tipo CLiente
                     </label>
-                    <input type="text" class="campo" name="InputIdTipoCliente">
+                    <input type="text" class="campo" name="InputIdTipoCliente" id="InputIdTipoCliente">
                 </div>
                 
                 <div class="caja">
                     <label for="" class="label">
                         CC o NIT
                     </label>
-                    <input type="text" class="campo" name="InputCC_Nit">
+                    <input type="text" class="campo" name="InputCC_Nit" id="InputCC_Nit">
                 </div>
 
                 <div class="caja">
                     <label for="" class="label">
                         Nombres
                     </label>
-                    <input type="text" class="campo" name="InputNombres">
+                    <input type="text" class="campo" name="InputNombres" id="InputNombres">
                 </div>
                 
                 <div class="caja">
                     <label for="" class="label">
                         Ciudad
                     </label>
-                    <input type="text" class="campo" name="InputIdCiudad">
+                    <input type="text" class="campo" name="InputIdCiudad" id="InputIdCiudad">
                 </div>
                 
                 <div class="caja">
                     <label for="" class="label">
                         Direccion
                     </label>
-                    <input type="text" class="campo" name="InputDireccion">
+                    <input type="text" class="campo" name="InputDireccion" id="InputDireccion">
                 </div>
                     
                                            
@@ -58,7 +59,7 @@
                     <label for="" class="label">
                         email
                     </label>
-                    <input type="text" class="campo medium" name="InputEmail">
+                    <input type="text" class="campo medium" name="InputEmail" id="InputEmail">
                 </div>
 
                 
@@ -66,7 +67,7 @@
                     <label for="" class="label">
                         Telefono
                     </label>
-                    <input type="text" class="campo normal" name="InputTelefono">
+                    <input type="text" class="campo normal" name="InputTelefono" id="InputTelefono">
                 </div>
 
 
@@ -108,8 +109,17 @@
 
 <script>
 function prueba(){
-    var nombre = document.getElementById('InputIdCliente').value
-    alert(nombre)
+    var IdCliente = document.getElementById('InputIdCliente').value
+    var IdTipoCliente = document.getElementById('InputIdTipoCliente').value
+    var CC_Nit = document.getElementById('InputCC_Nit').value
+    var Nombres = document.getElementById('InputNombres').value
+    var IdCiudad = document.getElementById('InputIdCiudad').value
+    var Direccion = document.getElementById('InputDireccion').value
+    var Email = document.getElementById('InputEmail').value
+    var Telefono = document.getElementById('InputTelefono').value
+
+
+    alert(IdCliente +","+ IdTipoCliente +","+ CC_Nit +","+ Nombres +","+ IdCiudad +","+ Direccion +","+ Email +","+ Telefono)
 }
 </script>
 {% endblock %}
