@@ -3,11 +3,11 @@
     # * Redirect:           Modulo de Flask  que se usa para redirigir a otra pagina
     # * url_for:            Utiliería para tomar la url de otra ruta de la ap.
     # * render_template:    Utilería que se usa para renderizar los archivos del front.
-    
+    # } Request:            Utileria para recibir datos de un formulario
     # * SqlAlchemy: Librería de python como base ORM para modelar los datos de la base de y representarlos como como objetos dentro del backend. Bajo esta lbirería se crean las clases de cada componente de la lógica del negocio.
 
 
-from flask import Flask, redirect, url_for, render_template
+from flask import Flask, redirect, url_for, render_template, request
 from flask_sqlalchemy import SQLAlchemy
 
 
@@ -74,7 +74,7 @@ class Marca(db.Model):
     Marca = db.Column(db.String, nullable = False)
 
 
-#Rutas
+#Rutas de Inicio --------------------------------------
 @app.route('/')
 def redirect_to_login():
     return redirect(url_for('login')) 
@@ -87,11 +87,7 @@ def login():
 def index():
     return render_template('index.html')
     
-@app.route('/base')
-def base():
-    return render_template('base.html')
-
-
+# -- Rutas Clientes -------------------------------
 @app.route('/clientes')
 def clientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
@@ -101,7 +97,21 @@ def clientes():
 def crear_cliente():
     return render_template('crear_cliente.html')
 
-#---------------------------------------------------------------------------
+@app.route('/guardar_cliente', methods=["POST"])
+def guardar_cliente():
+    cliente = Cliente(
+                      IdTIpoCliente=request.form['InputIdTipoCliente'], 
+                      CC_NIT = "444",
+                      Nombres = "abc", 
+                      IdCiudad="5", 
+                      Direccion="cra",
+                      email="rerre@sdsd.com",
+                      Telefono="444"                      
+                      )
+    db.session.add(cliente)
+    db.session.commit()
+    return redirect(url_for('clientes'))
+#------------------------------------------------------
 #Ejecucion
     
 if __name__ == "__main__":

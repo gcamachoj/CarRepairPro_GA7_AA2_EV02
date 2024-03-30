@@ -7,7 +7,7 @@
         Gestión de Clientes
     </h1>      
         
-        <form class="form-principal">  
+        <form action="/guardar_cliente" method="POST" class="form-principal">  
             
             <div class="campos">
                
@@ -15,44 +15,58 @@
                     <label for="" class="label">
                         Cod. Cliente
                     </label>
-                    <input type="text" class="campo" name="">
+                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente">
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Tipo CLiente
+                    </label>
+                    <input type="text" class="campo" name="InputIdTipoCliente">
                 </div>
                 
+                <div class="caja">
+                    <label for="" class="label">
+                        CC o NIT
+                    </label>
+                    <input type="text" class="campo" name="InputCC_Nit">
+                </div>
+
                 <div class="caja">
                     <label for="" class="label">
                         Nombres
                     </label>
-                    <input type="text" class="campo" name="">
+                    <input type="text" class="campo" name="InputNombres">
                 </div>
                 
                 <div class="caja">
                     <label for="" class="label">
-                        Apellidos
+                        Ciudad
                     </label>
-                    <input type="text" class="campo" name="">
+                    <input type="text" class="campo" name="InputIdCiudad">
                 </div>
                 
                 <div class="caja">
                     <label for="" class="label">
-                        CC o Nit
+                        Direccion
                     </label>
-                    <input type="text" class="campo" name="">
+                    <input type="text" class="campo" name="InputDireccion">
                 </div>
                     
                                            
                 <div class="caja">
                     <label for="" class="label">
-                        Num. Telefónico Contacto
+                        email
                     </label>
-                    <input type="text" class="campo medium" name="">
+                    <input type="text" class="campo medium" name="InputEmail">
                 </div>
 
                 
                 <div class="caja">
                     <label for="" class="label">
-                        Dirección
+                        Telefono
                     </label>
-                    <input type="text" class="campo normal" name="">
+                    <input type="text" class="campo normal" name="InputTelefono">
                 </div>
 
 
@@ -77,20 +91,25 @@
                     </select>
                  </div>
 
-                <div class="caja">
-                    <label for="" class="label">
-                        Email
-                    </label>
-                    <input type="text" class="campo" name="">
-                </div>
                 <!-------->
-            </div>          
+            </div>  
+            <div class=footer-buttons>
+                <button type="submit" class="btn btn-success btn-sm text-center">
+                
+                Guardar
+                </button>
+
+                <button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button>
+            </div>        
         </form>
 
-        <div class=footer-buttons>
-            <input type="button" class="btn btn-success btn-sm text-center" name="submit" value="Crear Registro">
-        </div>
+        
 </div>
 
-
+<script>
+function prueba(){
+    var nombre = document.getElementById('InputIdCliente').value
+    alert(nombre)
+}
+</script>
 {% endblock %}
