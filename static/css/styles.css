@@ -36,6 +36,25 @@ header{
 .content{
     width:100%;
 }
+
+.content .container h1 {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size:x-large;
+}
+
+.content .container .row {
+    padding: 10px;
+}
+
+.table .btn {
+    width: auto;
+    padding: 5px 5px;
+    margin: 0 3px;
+    font-size:x-small;
+    border-style:none;
+}
+
 .contenido{
     display: flex;
     flex-direction: row;

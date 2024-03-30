@@ -20,4 +20,4 @@ def crear_cliente(getIdTipoCliente, getCC_NIT, getNombres, getIdCiudad, getDirec
 
 
 # Llamada a la función
-print(crear_cliente(1, '2323', 'Guillermo Camacho', 1, 'Calle 1 N1', 'guiller.cccc@gmail.com', '123456'))
+print(crear_cliente(1, '33433', 'Juan Jose David Camacho leal', 1, 'Calle 1 N1', 'guiller.cccc@gmail.com', '123456'))
