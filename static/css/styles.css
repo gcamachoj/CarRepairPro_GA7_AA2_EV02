@@ -74,14 +74,30 @@ header{
     color: rgb(61, 60, 60);
 }
 
+.container .footer-buttons{
+    text-align:center;
+    padding: 10px;
+}
 
-.contenido .form-login a{
-    margin-top: 10px;
-    display: block;
-    text-align: center;
-    text-decoration: none;
-    cursor: poniter;
-    margin-bottom: 20px;
+#footer-buttons{
+    text-align:center;
+    padding: 10px;
+}
+
+
+
+.footer-buttons input[type="submit"] {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #3750bd;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.footer-buttons input[type="submit"]:hover {
+    background-color: #3d29b3;
 }
 
 /* Login **/
@@ -89,6 +105,11 @@ header{
     display: flex;
     margin:auto;
     padding: 5px;    
+}
+
+
+.head-buttons {
+    padding: 10px;
 }
 .form-login{
     width: 100%;
@@ -110,21 +131,12 @@ header{
     
 }
 
+
+
 /*  ---- cierra contenido ---------*/
-.btn {
-border: 2px solid rgb(48, 57, 139);
-color: white;
-cursor: pointer;
-width:100px;
-}
 
-.btn-submit {
-    background-color: #2B78E4;
-}
 
-.btn-submit:hover{
-    background-color: #073e6e;
-}
+
 /* aside----------------------------------*/
 aside{
     width:20%;
@@ -281,15 +293,6 @@ aside .contenido-aside{
     display: flex;
     justify-content:center;
     
-}
-
-input.btn.btn-submit{
-    margin: 5px; 
-    border-radius: 5px;
-    padding: 10px;
-    
- 
- 
 }
 
 /**** medias queryes -------*/

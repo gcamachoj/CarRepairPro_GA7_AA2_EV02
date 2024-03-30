@@ -1,11 +1,11 @@
 {% extends "base.html" %}
 
 {% block content %}
-<div class="work-area">
+<div class="container">
                 
-    <div class="title">
+    <h1 class="text-center">
         Gestión de Clientes
-    </div>      
+    </h1>      
         
         <form class="form-principal">  
             
@@ -87,14 +87,10 @@
             </div>          
         </form>
 
-        <div class="botones">
-            <input type="button" class="btn btn-submit" name="submit" value="Buscar">
-            <input type="button" class="btn btn-submit" name="submit" value="Adicionar">
-            <input type="button" class="btn btn-submit" name="submit" value="Actualizar">
-            <input type="button" class="btn btn-submit" name="submit" value="Eliminar">
+        <div class=footer-buttons>
+            <input type="button" class="btn btn-success btn-sm text-center" name="submit" value="Crear Registro">
         </div>
+</div>
 
-</div> <!-- CIERRA WORK-AREA -->
-</div> <!-- CIERRA  CONTENIDO -->
 
 {% endblock %}
