@@ -95,7 +95,9 @@ def clientes():
 
 @app.route('/crear_cliente')
 def crear_cliente():
-    return render_template('crear_cliente.html')
+    ciudades = Ciudad.query.all()
+    tiposCliente = TipoCliente.query.all()
+    return render_template('crear_cliente.html', ciudades=ciudades, tiposCliente=tiposCliente)
 
 @app.route('/guardar_cliente', methods=["POST"])
 def guardar_cliente():
