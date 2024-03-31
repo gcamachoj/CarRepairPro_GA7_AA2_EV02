@@ -112,8 +112,49 @@ def guardar_cliente():
     db.session.commit()
     flash('¡Cliente guardado exitosamente!', 'success')
     return redirect(url_for('clientes'))
-    
+
+
+@app.route('/clientes/<int:cliente_id>')
+def detalleClientes(cliente_id):
+    cliente= Cliente.query.get_or_404(cliente_id)
+    return render_template('detalle_clientes.html', cliente=cliente)
+ 
+
+@app.route('/eliminar-cliente/<int:cliente_id>')
+def eliminarCliente(cliente_id):
+    Cliente.query.filter_by(IdCliente = int(cliente_id)).delete()
+    db.session.commit()   
+    flash('¡Cliente eliminado exitosamente!', 'success')
+    return redirect(url_for('clientes')) 
 #------------------------------------------------------
+
+@app.route('/actualizar-cliente/<int:cliente_id>', methods=['GET','POST'])
+def actualizar_cliente(cliente_id):
+    cliente = Cliente.query.filter_by(IdCliente = int(cliente_id)).first()
+    if cliente:
+        if request.method == 'POST':
+            # Actualizar datos del cliente
+            cliente.Nombres = request.form['InputNombres']
+            db.session.commit()
+            flash('¡Cliente actualizado exitosamente!', 'success')
+            return redirect(url_for('clientes'))
+        else:
+            return render_template('actualizar_cliente.html', cliente=cliente)
+    else:
+        return "Cliente no encontrado", 404
+
+
+
+
+
+
+
+
+
+
+
+
+
 #Ejecucion
     
 if __name__ == "__main__":
