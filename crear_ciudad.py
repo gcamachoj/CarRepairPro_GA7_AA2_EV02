@@ -15,4 +15,4 @@ def crear_ciudad(getCiudad):
     except Exception as e:
         return f"Error al crear ciudad: {str(e)}"
 
-print(crear_ciudad('Bogota'))
+print(crear_ciudad('Cali'))

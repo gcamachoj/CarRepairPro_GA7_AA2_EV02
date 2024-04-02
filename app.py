@@ -33,7 +33,7 @@ class Ciudad(db.Model):
 # Se crea el modelo de datos para la tabla TipoCliente
 class TipoCliente(db.Model):
     __tablename__='Tipo_Cliente'
-    idTipoCliente = db.Column(db.Integer, primary_key=True)
+    IdTipoCliente = db.Column(db.Integer, primary_key=True)
     TipoCliente = db.Column(db.String(45), nullable = False)
     IdEstado = db.Column(db.Integer, nullable=False)
 
@@ -42,13 +42,15 @@ class TipoCliente(db.Model):
 class Cliente(db.Model):
     __tablename__ = 'clientes'    
     IdCliente = db.Column(db.Integer, primary_key=True)
-    IdTipoCliente = db.Column(db.Integer, nullable = False)
+    IdTipoCliente = db.Column(db.Integer, db.ForeignKey('Tipo_Cliente.IdTipoCliente'), nullable=False)
     CC_NIT = db.Column(db.String(50), nullable = False)
     Nombres = db.Column(db.String(100), nullable = False)
     IdCiudad = db.Column(db.Integer, nullable = False)
     Direccion = db.Column(db.String(150), nullable = False)
     email = db.Column(db.String(100), nullable = False)
     telefono = db.Column(db.String(50), nullable = False)
+
+    tipo_cliente = db.relationship('TipoCliente', backref='clientes')
     
 # Crear el modelo vehiculo
 class Vehiculo(db.Model):
@@ -119,7 +121,9 @@ def guardar_cliente():
 @app.route('/clientes/<int:cliente_id>')
 def detalleClientes(cliente_id):
     cliente= Cliente.query.get_or_404(cliente_id)
-    return render_template('detalle_clientes.html', cliente=cliente)
+    tiposCliente = TipoCliente.query.all()
+    ciudades = Ciudad.query.all()
+    return render_template('detalle_clientes.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades) 
  
 
 @app.route('/eliminar-cliente/<int:cliente_id>')

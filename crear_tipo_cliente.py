@@ -18,4 +18,4 @@ def crear_tipo_cliente(getTipoCliente, getIdEstado):
         return f"Error al crear cliente: {str(e)}"
 
 # Llamada a la función
-print(crear_tipo_cliente("Empresa", 1))
+print(crear_tipo_cliente("Persona Natural", 1))
