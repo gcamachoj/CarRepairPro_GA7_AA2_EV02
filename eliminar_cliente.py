@@ -26,6 +26,6 @@ if __name__ == "__main__":
     IdCliente = int(sys.argv[1])
     
     # Llamar a la función eliminar_cliente con el ID del cliente proporcionado
-    eliminar_cliente(IdCliente)
+    eliminar_cliente(26)
 
 app_context.pop()

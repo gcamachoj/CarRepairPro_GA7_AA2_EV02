@@ -137,15 +137,24 @@ def eliminarCliente(cliente_id):
 @app.route('/actualizar-cliente/<int:cliente_id>', methods=['GET','POST'])
 def actualizar_cliente(cliente_id):
     cliente = Cliente.query.filter_by(IdCliente = int(cliente_id)).first()
+    tiposCliente = TipoCliente.query.all()
+    ciudades = Ciudad.query.all()
+    
     if cliente:
         if request.method == 'POST':
             # Actualizar datos del cliente
             cliente.Nombres = request.form['InputNombres']
+            cliente.IdTipoCliente=request.form['InputIdTipoCliente']
+            cliente.CC_NIT = request.form['InputCC_Nit']
+            cliente.IdCiudad= request.form['InputIdCiudad']
+            cliente.Direccion=request.form['InputDireccion']
+            cliente.email=request.form['InputEmail']
+            cliente.telefono= request.form['InputTelefono'] 
             db.session.commit()
             flash('¡Cliente actualizado exitosamente!', 'success')
             return redirect(url_for('clientes'))
         else:
-            return render_template('actualizar_cliente.html', cliente=cliente)
+            return render_template('actualizar_cliente.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades)
     else:
         return "Cliente no encontrado", 404
 
