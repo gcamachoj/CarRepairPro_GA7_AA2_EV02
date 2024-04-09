@@ -1,0 +1,15 @@
+{
+    "name": "Python with MySQL",
+    "build": {
+      "dockerfile": "Dockerfile",
+      "args": { 
+        "VARIANT": "3.8"
+      }
+    },
+    "extensions": ["ms-python.python"],
+    "forwardPorts": [5000],
+
+    "postCreateCommand": "apt-get update && apt-get install -y mysql-server && service mysql start && mysql -u root -p < /workspace/static/20240324_script_creación_bd_taller_v3.sql && pip install -r requirements.txt && flask run"
+
+
+}
