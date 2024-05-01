@@ -23,7 +23,7 @@ db = SQLAlchemy(app)
 
 
 ### MODELOS DE DATOS ##########################################################################
-
+###--------------------------------------------------------------------------------------------
 # Se crea el modelo ciudad:
 class Ciudad(db.Model):
     __tablename__ = 'ciudades'
@@ -75,8 +75,8 @@ class Marca(db.Model):
     IdMarca = db.Column(db.Integer, primary_key = True)
     Marca = db.Column(db.String, nullable = False)
 
-
-#Rutas de Inicio --------------------------------------
+# ENDPOINTS =======================================================================
+# =============================================================================
 @app.route('/')
 def redirect_to_login():
     return redirect(url_for('login')) 
@@ -89,19 +89,22 @@ def login():
 def index():
     return render_template('index.html')
     
-# -- Rutas Clientes -------------------------------
+# === ENDPOINTS CLIENTES =============================================================
+#***********************************************************************************
 @app.route('/clientes')
 def clientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
-    return render_template('clientes.html', clientes=clientes)
+    return render_template('clientes/clientes.html', clientes=clientes)
 
 @app.route('/crear_cliente')
 def crear_cliente():
     ciudades = Ciudad.query.all()
     tiposCliente = TipoCliente.query.all()
-    return render_template('crear_cliente.html', ciudades=ciudades, tiposCliente=tiposCliente)
+    return render_template('clientes/crear_cliente.html', ciudades=ciudades, tiposCliente=tiposCliente)
 
-@app.route('/guardar_cliente', methods=["POST"])
+
+
+@app.route('/clientes/guardar_cliente', methods=["POST"])
 def guardar_cliente():
     cliente = Cliente(
                       IdTipoCliente=request.form['InputIdTipoCliente'], 
@@ -123,7 +126,7 @@ def detalleClientes(cliente_id):
     cliente= Cliente.query.get_or_404(cliente_id)
     tiposCliente = TipoCliente.query.all()
     ciudades = Ciudad.query.all()
-    return render_template('detalle_clientes.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades) 
+    return render_template('clientes/detalle_clientes.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades) 
  
 
 @app.route('/eliminar-cliente/<int:cliente_id>')
@@ -154,7 +157,7 @@ def actualizar_cliente(cliente_id):
             flash('¡Cliente actualizado exitosamente!', 'success')
             return redirect(url_for('clientes'))
         else:
-            return render_template('actualizar_cliente.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades)
+            return render_template('clientes/actualizar_cliente.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades)
     else:
         return "Cliente no encontrado", 404
 
