@@ -10,6 +10,8 @@
 from flask import Flask, redirect, url_for, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 
+# Registra las rutas del componente vehiculos en el archivo app.py
+from vehiculos.routes import vehiculos_bp  
 
 
 # Instanciamos la aplicacion
@@ -17,6 +19,7 @@ app = Flask(__name__)
 app.config['SECRET_KEY'] = 'SENA'
 # Configuramos la base de datos mysql 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'  
+app.register_blueprint(vehiculos_bp)
 
 # creamos el objeto db utilizando la instancia de la aplicacion 
 db = SQLAlchemy(app)
