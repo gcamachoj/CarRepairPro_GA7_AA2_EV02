@@ -19,7 +19,7 @@
     <table class="table table-responsive table-striped table-hover">
         <thead>
             <tr>
-                <th>ID</th>
+                <th>Placa</th>
                 <th>Nombre</th>
                 <th>Correo Electrónico</th>
                 <th>Teléfono</th>
@@ -27,23 +27,23 @@
             </tr>
         </thead>
         <tbody>
-            {% for cliente in clientes %}
+            {% for vehiculo in vehiculos %}
             <tr>
-                <td>{{ cliente.IdCliente }}</td>
-                <td>{{ cliente.Nombres }}</td>
-                <td>{{ cliente.email }}</td>
-                <td>{{ cliente.telefono }}</td>
+                <td>{{ vehiculo.Placa }}</td>
+                <td>{{ vehiculo.Placa }}</td>
+                <td>{{ vehiculo.Placa }}</td>
+                <td>{{ vehiculo.Placa }}</td>
                 <td>
-                    <form action="{{ url_for('detalleClientes', cliente_id=cliente.IdCliente) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <form action="" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                     <button type="submit" class="btn btn-info btn-sm">Detalles</button>
                   </form>
                   
-                  <form action="{{ url_for('actualizar_cliente', cliente_id=cliente.IdCliente)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                  <form action="" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                   </form>
                
                   
-                  <form action="{{ url_for('eliminarCliente', cliente_id=cliente.IdCliente) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
+                  <form action="" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
                   <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                   </form>  
                 </td>

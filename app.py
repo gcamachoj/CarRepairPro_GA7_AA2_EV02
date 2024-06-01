@@ -9,7 +9,7 @@
 
 from flask import Flask, redirect, url_for, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
-
+from extensions import db  # Importa db desde extensions.py
 # Registra las rutas del componente vehiculos en el archivo app.py
 from vehiculos.routes import vehiculos_bp  
 
@@ -21,9 +21,8 @@ app.config['SECRET_KEY'] = 'SENA'
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'  
 app.register_blueprint(vehiculos_bp)
 
-# creamos el objeto db utilizando la instancia de la aplicacion 
-db = SQLAlchemy(app)
-
+# c# Inicializa la extensión SQLAlchemy
+db.init_app(app)
 
 ### MODELOS DE DATOS ##########################################################################
 ###--------------------------------------------------------------------------------------------
@@ -55,16 +54,6 @@ class Cliente(db.Model):
 
     tipo_cliente = db.relationship('TipoCliente', backref='clientes')
     
-# Crear el modelo vehiculo
-class Vehiculo(db.Model):
-    __tablename__ = 'Vehiculos'
-    IdVehiculo = db.Column(db.Integer, primary_key = True)
-    Placa = db.Column(db.String(10), nullable = False)
-    IdMarca = db.Column(db.Integer, nullable = False)
-    Linea = db.Column(db.String(45), nullable = False)
-    Modelo = db.Column(db.Integer, nullable = False)
-    Color = db.Column(db.String(45), nullable = False)
-    IdTipoCarroceria = db.Column(db.Integer, nullable = False)
 
 # Crear el modelo Tipo Carroceria
 class Tipo_Carroceria(db.Model):
