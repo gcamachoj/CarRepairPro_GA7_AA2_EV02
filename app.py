@@ -55,17 +55,7 @@ class Cliente(db.Model):
     tipo_cliente = db.relationship('TipoCliente', backref='clientes')
     
 
-# Crear el modelo Tipo Carroceria
-class Tipo_Carroceria(db.Model):
-    __tablename__ ='tipos_carroceria'
-    IdTipoCarroceria = db.Column(db.Integer, primary_key = True)
-    TipoCarroceria = db.Column(db.String(45), nullable = False)
 
-#Crear el modelo Marca
-class Marca(db.Model):
-    __tablename__= 'Marcas'
-    IdMarca = db.Column(db.Integer, primary_key = True)
-    Marca = db.Column(db.String, nullable = False)
 
 # ENDPOINTS =======================================================================
 # =============================================================================

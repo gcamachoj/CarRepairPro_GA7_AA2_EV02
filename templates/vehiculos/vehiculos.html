@@ -19,26 +19,39 @@
     <table class="table table-responsive table-striped table-hover">
         <thead>
             <tr>
+                <th>IdVehiculo</th>
                 <th>Placa</th>
-                <th>Nombre</th>
-                <th>Correo Electrónico</th>
-                <th>Teléfono</th>
+                <th>Marca</th>
+                <th>Línea</th>
+                <th>Modelo</th>
+                <th>Color</th>
+                <th>Tipo Carrocería</th>
+                <th>IdCiudad</th>
+                
                 <th style="width: 200px;">Accion</th>
             </tr>
         </thead>
         <tbody>
             {% for vehiculo in vehiculos %}
             <tr>
+                <td>{{ vehiculo.IdVehiculo }}</td>
                 <td>{{ vehiculo.Placa }}</td>
-                <td>{{ vehiculo.Placa }}</td>
-                <td>{{ vehiculo.Placa }}</td>
-                <td>{{ vehiculo.Placa }}</td>
+               
+                <td>{{ vehiculo.marca.Marca}}</td>
+
+                <td>{{ vehiculo.Linea }}</td>
+                <td>{{ vehiculo.Modelo }}</td>
+                <td>{{ vehiculo.Color }}</td>
+                <td>{{ vehiculo.tipo_carroceria.TipoCarroceria }}</td>    
+                <td>{{ vehiculo.IdCiudad }}</td>
+
+
                 <td>
-                    <form action="" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <form action="#" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                     <button type="submit" class="btn btn-info btn-sm">Detalles</button>
                   </form>
                   
-                  <form action="" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                  <form action="#" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                   </form>
                
