@@ -32,3 +32,8 @@ class Tipos_Carroceria(db.Model):
     vehiculos = db.relationship('Vehiculo', backref='tipo_carroceria', lazy=True)  
     # Vehiculo es la clase del modelo, tipo_carrocería es el nombre de la referencia a emplear.
 
+# Se crea el modelo ciudad:
+class Ciudad(db.Model):
+    __tablename__ = 'ciudades'
+    IdCiudad = db.Column(db.Integer, primary_key=True)
+    Ciudad = db.Column(db.String(45), nullable = False)

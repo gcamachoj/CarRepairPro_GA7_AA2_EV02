@@ -12,7 +12,7 @@ from flask_sqlalchemy import SQLAlchemy
 from extensions import db  # Importa db desde extensions.py
 # Registra las rutas del componente vehiculos en el archivo app.py
 from vehiculos.routes import vehiculos_bp  
-
+from modelos import Ciudad # Importamos el modelo ciudad del archivo modelos
 
 # Instanciamos la aplicacion
 app = Flask(__name__)  
@@ -26,11 +26,7 @@ db.init_app(app)
 
 ### MODELOS DE DATOS ##########################################################################
 ###--------------------------------------------------------------------------------------------
-# Se crea el modelo ciudad:
-class Ciudad(db.Model):
-    __tablename__ = 'ciudades'
-    IdCiudad = db.Column(db.Integer, primary_key=True)
-    Ciudad = db.Column(db.String(45), nullable = False)
+
 
 # Se crea el modelo de datos para la tabla TipoCliente
 class TipoCliente(db.Model):
