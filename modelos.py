@@ -12,7 +12,8 @@ class Vehiculo(db.Model):
     Color =             db.Column(db.String(45), nullable = False)
     IdTipoCarroceria =  db.Column(db.Integer, db.ForeignKey('tipos_carroceria.IdTipoCarroceria'), nullable = False)  
     # tipos_carroceria es la referencia creada en la relación. ver modelo Tipos_carroceria
-    IdCiudad =          db.Column(db.Integer, nullable = False)
+    IdCiudad =          db.Column(db.Integer, db.ForeignKey('ciudades.IdCiudad'), nullable = False)
+    # Crea el campo foraneo IdCiudad y Establece la relacion con la tabla ciudad.
 
     #Crear el modelo Marca
 class Marca(db.Model):
@@ -37,3 +38,5 @@ class Ciudad(db.Model):
     __tablename__ = 'ciudades'
     IdCiudad = db.Column(db.Integer, primary_key=True)
     Ciudad = db.Column(db.String(45), nullable = False)
+    vehiculos = db.relationship('Vehiculo', backref='ciudad_vehiculo', lazy=True)
+    # Se estabece referencia ciudad_vehiculo con la tabla vehiculos para usarla en el front
