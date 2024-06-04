@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+                
+    <h1 class="text-center">
+        Actualizar Vehículo
+    </h1>      
+    
+        <form action="{{ url_for('vehiculos_bp.actualizar_vehiculo', vehiculo_id=vehiculo.IdVehiculo) }}" method="POST" class="form-principal">  
+            
+            <div class="campos">
+               
+                <div class="caja">
+                    <label for="" class="label">
+                        Cod. Vehiculo
+                    </label>
+                    <input type="text" class="campo" name="InputIdVehiculo" id="InputIdVehiculo" disabled value=" {{ vehiculo.IdVehiculo }}">
+                </div>
+                
+                          
+                <div class="caja">
+                    <label for="" class="label">
+                        Placa
+                    </label>
+                    <input type="text" class="campo" name="InputPlaca" id="InputPlaca" value = "{{ vehiculo.Placa }}">
+                 </div>
+
+
+                 <div class="caja">
+                    <label for="" class="label">
+                        Marca
+                    </label>
+                    <select class="campo" name="InputIdMarca" id="InputIdMarca">
+                    {% for marca in marcas %}
+                        <option value = "{{ marca.IdMarca }}" {% if marcas.IdMarca == vehiculo.IdMarca %} selected {% endif %}> 
+                            {{ marca.Marca }}
+                        </option> 
+                    {% endfor %}  
+                    </select>
+                 </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Línea
+                    </label>
+                    <input type="text" class="campo" name="InputLinea" id="InputLinea" value = "{{ vehiculo.Linea}}">
+                </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Modelo
+                    </label>
+                    <input type="text" class="campo" name="InputModelo" id="InputModelo" value = "{{ vehiculo.Modelo }}">
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        Color
+                    </label>
+                    <input type="text" class="campo" name="InputColor" id="InputColor" value = "{{ vehiculo.Color }}">
+                </div>
+                
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Tipo Carroceria
+                    </label>
+                    <select class="campo" name="InputIdTipoCarroceria" id="InputIdTipoCarroceria">
+                    {% for tipo_carroceria in tipos_carroceria %}
+                        <option value = "{{ tipo_carroceria.IdTipoCarroceria }}" {% if tipos_carroceria.IdTipoCarroceria == vehiculo.IdTipoCarroceria %} selected {% endif %}>
+                            {{ tipo_carroceria.TipoCarroceria }}
+                        </option> 
+                    {% endfor %}  
+                    </select>
+                 </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Ciudad
+                    </label>
+                    
+                    <select class="campo" name="InputIdCiudad" id="InputIdCiudad">
+                    {% for ciudad in ciudades %}
+                        <option value = "{{ ciudad.IdCiudad }}" {% if ciudad.IdCiudad == vehiculo.IdCiudad %} selected {% endif %}>
+                            {{ ciudad.Ciudad }}
+                        </option> 
+                    {% endfor %}  
+                    </select>
+                 </div>
+
+            </div>  
+                
+                <div class=footer-buttons>
+                    <button type="submit" class="btn btn-success btn-sm text-center">
+                    Guardar
+                    </button>
+                    
+                    <!--<button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button> -->
+            </div>        
+        </form>
+
+        
+</div>
+
+<script>
+function prueba(){
+    var IdCliente = document.getElementById('InputIdCliente').value
+    var IdTipoCliente = document.getElementById('InputIdTipoCliente').value
+    var CC_Nit = document.getElementById('InputCC_Nit').value
+    var Nombres = document.getElementById('InputNombres').value
+    var IdCiudad = document.getElementById('InputIdCiudad').value
+    var Direccion = document.getElementById('InputDireccion').value
+    var Email = document.getElementById('InputEmail').value
+    var Telefono = document.getElementById('InputTelefono').value
+
+
+    alert(IdCliente +","+ IdTipoCliente +","+ CC_Nit +","+ Nombres +","+ IdCiudad +","+ Direccion +","+ Email +","+ Telefono)
+}
+</script>
+{% endblock %}

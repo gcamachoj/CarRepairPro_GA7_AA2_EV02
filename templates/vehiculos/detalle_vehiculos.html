@@ -5,86 +5,81 @@
 <div class="container">
                 
     <h1 class="text-center">
-        Registrar Nuevo de Cliente
+        Detalle de Vehiculos
     </h1>      
     
-        <form action="/clientes/guardar_cliente" method="POST" class="form-principal">  
+        <form action="/vehiculos" method="GET" class="form-principal">  
             
             <div class="campos">
                
                 <div class="caja">
                     <label for="" class="label">
-                        Cod. Cliente
+                        Cod. Vehiculo
                     </label>
-                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente" disabled>
+                    <input type="text" class="campo" name="InputIdVehiculo" id="InputIdVehiculo" disabled value="{{ vehiculo.IdVehiculo }}">
                 </div>
                 
                           
                 <div class="caja">
                     <label for="" class="label">
-                        Tipo Cliente
+                        Placa
                     </label>
-                    <select class="campo" name="InputIdTipoCliente" id="InputIdTipoCliente">
-                    {% for tipoCliente in tiposCliente %}
-                        <option value = "{{ tipoCliente.IdTipoCliente }}">{{ tipoCliente.TipoCliente }}</option> 
-                    {% endfor %}  
-                    </select>
+                    <input type="text" class="campo" name="InputPlaca" id="InputPlaca" disabled value = "{{ vehiculo.Placa }}">
                  </div>
 
-                <div class="caja">
-                    <label for="" class="label">
-                        CC o NIT
-                    </label>
-                    <input type="text" class="campo" name="InputCC_Nit" id="InputCC_Nit">
-                </div>
 
-                <div class="caja">
+                 <div class="caja">
                     <label for="" class="label">
-                        Nombres
+                        Marca
                     </label>
-                    <input type="text" class="campo" name="InputNombres" id="InputNombres">
-                </div>
-                
-                <div class="caja">
-                    <label for="" class="label">
-                        Ciudad
-                    </label>
-                    <select class="campo" name="InputIdCiudad" id="InputIdCiudad">
-                    {% for ciudad in ciudades %}
-                        <option value = "{{ ciudad.IdCiudad }}">{{ ciudad.Ciudad }}</option> 
-                    {% endfor %}  
-                    </select>
+                    <input type="text" class="campo" name="InputMarca" id="InputMarca" disabled value = "{{ vehiculo.marca.Marca }}">
                  </div>
-                
+
+
                 <div class="caja">
                     <label for="" class="label">
-                        Direccion
+                        Línea
                     </label>
-                    <input type="text" class="campo" name="InputDireccion" id="InputDireccion">
-                </div>
-                    
-                                           
-                <div class="caja">
-                    <label for="" class="label">
-                        email
-                    </label>
-                    <input type="text" class="campo medium" name="InputEmail" id="InputEmail">
+                    <input type="text" class="campo" name="InputLinea" id="InputLinea" disabled value = "{{ vehiculo.Linea }}">
                 </div>
 
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Modelo
+                    </label>
+                    <input type="text" class="campo" name="InputModelo" id="InputModelo" disabled value = "{{ vehiculo.Modelo }}">
+                </div>
+                
                 
                 <div class="caja">
                     <label for="" class="label">
-                        Telefono
+                        Color
                     </label>
-                    <input type="text" class="campo normal" name="InputTelefono" id="InputTelefono">
+                    <input type="text" class="campo" name="InputColor" id="InputColor" disabled value = "{{ vehiculo.Color}}">
                 </div>
+                
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Tipo Carrocería
+                    </label>
+                    <input type="text" class="campo" name="InputTipoCarroceria" id="InputTipoCarroceria" disabled value = "{{ vehiculo.tipo_carroceria.TipoCarroceria}}">
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                       Ciudad
+                    </label>
+                    <input type="text" class="campo" name="InputCiudad" id="InputCiudad" disabled value = "{{ vehiculo.ciudad_vehiculo.Ciudad}}">
+                </div>
+
 
             </div>  
                 
                 <div class=footer-buttons>
-                    <button type="submit" class="btn btn-success btn-sm text-center">
-                    Guardar
-                    </button>
+                    <button class="btn btn-primary btn-sm text-center" onClick="redireccionarVehiculos()">Regresar</button>
                     
                     <!--<button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button> -->
             </div>        
@@ -94,6 +89,10 @@
 </div>
 
 <script>
+ 
+function redireccionarVehiculos(){
+    window.location.href = "{{ url_for('vehiculos_bp.vehiculos') }}"
+}
 function prueba(){
     var IdCliente = document.getElementById('InputIdCliente').value
     var IdTipoCliente = document.getElementById('InputIdTipoCliente').value

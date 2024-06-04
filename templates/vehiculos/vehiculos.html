@@ -5,7 +5,7 @@
 
     <h1 class= "text-center">Listado de Vehiculos</h1>
     <div class="head-buttons">
-        <a class="btn btn-success btn-sm" href="#">Crear</a>
+        <a class="btn btn-success btn-sm" href="{{ url_for('vehiculos_bp.crear_vehiculo')}}">Crear</a>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -26,7 +26,7 @@
                 <th>Modelo</th>
                 <th>Color</th>
                 <th>Tipo Carrocería</th>
-                <th>IdCiudad</th>
+                <th>Ciudad</th>
                 
                 <th style="width: 200px;">Accion</th>
             </tr>
@@ -47,16 +47,16 @@
 
 
                 <td>
-                    <form action="#" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <form action="{{ url_for('vehiculos_bp.detalleVehiculos', vehiculo_id=vehiculo.IdVehiculo) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                     <button type="submit" class="btn btn-info btn-sm">Detalles</button>
                   </form>
                   
-                  <form action="#" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
-                   <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    <form action="{{ url_for('vehiculos_bp.actualizar_vehiculo', vehiculo_id = vehiculo.IdVehiculo)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                   </form>
                
                   
-                  <form action="" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
+                  <form action="{{ url_for('vehiculos_bp.eliminarVehiculo', vehiculo_id=vehiculo.IdVehiculo) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
                   <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                   </form>  
                 </td>

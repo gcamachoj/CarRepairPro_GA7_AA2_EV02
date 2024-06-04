@@ -5,46 +5,77 @@
 <div class="container">
                 
     <h1 class="text-center">
-        Registrar Nuevo de Cliente
+        Registrar nuevo vehículo
     </h1>      
     
-        <form action="/clientes/guardar_cliente" method="POST" class="form-principal">  
+        <form action="/vehiculos/guardar_vehiculo" method="POST" class="form-principal">  
             
             <div class="campos">
                
                 <div class="caja">
                     <label for="" class="label">
-                        Cod. Cliente
+                        Cod. Vehiculo
                     </label>
-                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente" disabled>
+                    <input type="text" class="campo" name="InputIdVehiculo" id="InputIdVehiculo" disabled>
                 </div>
                 
                           
                 <div class="caja">
                     <label for="" class="label">
-                        Tipo Cliente
+                        Placa
                     </label>
-                    <select class="campo" name="InputIdTipoCliente" id="InputIdTipoCliente">
-                    {% for tipoCliente in tiposCliente %}
-                        <option value = "{{ tipoCliente.IdTipoCliente }}">{{ tipoCliente.TipoCliente }}</option> 
+                    <input type="text" class="campo" name="InputPlaca" id="InputPlaca">
+                 </div>
+
+
+                 <div class="caja">
+                    <label for="" class="label">
+                        Marca
+                    </label>
+                    <select class="campo" name="InputIdMarca" id="InputIdMarca">
+                    {% for marca in marcas %}
+                        <option value = "{{ marca.IdMarca }}">{{ marca.Marca }}</option> 
                     {% endfor %}  
                     </select>
                  </div>
 
-                <div class="caja">
-                    <label for="" class="label">
-                        CC o NIT
-                    </label>
-                    <input type="text" class="campo" name="InputCC_Nit" id="InputCC_Nit">
-                </div>
 
                 <div class="caja">
                     <label for="" class="label">
-                        Nombres
+                        Línea
                     </label>
-                    <input type="text" class="campo" name="InputNombres" id="InputNombres">
+                    <input type="text" class="campo" name="InputLinea" id="InputLinea">
+                </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Modelo
+                    </label>
+                    <input type="text" class="campo" name="InputModelo" id="InputModelo">
                 </div>
                 
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        Color
+                    </label>
+                    <input type="text" class="campo" name="InputColor" id="InputColor">
+                </div>
+                
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Tipo Carroceria
+                    </label>
+                    <select class="campo" name="InputIdTipoCarroceria" id="InputIdTipoCarroceria">
+                    {% for carroceria in carrocerias %}
+                        <option value = "{{ carroceria.IdTipoCarroceria }}">{{ carroceria.TipoCarroceria }}</option> 
+                    {% endfor %}  
+                    </select>
+                 </div>
+
+
                 <div class="caja">
                     <label for="" class="label">
                         Ciudad
@@ -55,29 +86,6 @@
                     {% endfor %}  
                     </select>
                  </div>
-                
-                <div class="caja">
-                    <label for="" class="label">
-                        Direccion
-                    </label>
-                    <input type="text" class="campo" name="InputDireccion" id="InputDireccion">
-                </div>
-                    
-                                           
-                <div class="caja">
-                    <label for="" class="label">
-                        email
-                    </label>
-                    <input type="text" class="campo medium" name="InputEmail" id="InputEmail">
-                </div>
-
-                
-                <div class="caja">
-                    <label for="" class="label">
-                        Telefono
-                    </label>
-                    <input type="text" class="campo normal" name="InputTelefono" id="InputTelefono">
-                </div>
 
             </div>  
                 
