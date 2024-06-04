@@ -11,8 +11,9 @@ from flask import Flask, redirect, url_for, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from extensions import db  # Importa db desde extensions.py
 # Registra las rutas del componente vehiculos en el archivo app.py
-from vehiculos.routes import vehiculos_bp  
-from modelos import Ciudad # Importamos el modelo ciudad del archivo modelos
+from vehiculos.routes import vehiculos_bp 
+from ordenes.routes import ordenes_bp 
+from modelos import Cliente, TipoCliente, Ciudad # Importamos el modelo ciudad del archivo modelos
 
 # Instanciamos la aplicacion
 app = Flask(__name__)  
@@ -20,37 +21,9 @@ app.config['SECRET_KEY'] = 'SENA'
 # Configuramos la base de datos mysql 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql+mysqlconnector://root:root@localhost/taller'  
 app.register_blueprint(vehiculos_bp)
-
+app.register_blueprint(ordenes_bp)
 # c# Inicializa la extensión SQLAlchemy
 db.init_app(app)
-
-### MODELOS DE DATOS ##########################################################################
-###--------------------------------------------------------------------------------------------
-
-
-# Se crea el modelo de datos para la tabla TipoCliente
-class TipoCliente(db.Model):
-    __tablename__='Tipo_Cliente'
-    IdTipoCliente = db.Column(db.Integer, primary_key=True)
-    TipoCliente = db.Column(db.String(45), nullable = False)
-    IdEstado = db.Column(db.Integer, nullable=False)
-
-
-# Creamos el modelo de datos para la tabla Cliente usando el ORM SQLAlchemy
-class Cliente(db.Model):
-    __tablename__ = 'clientes'    
-    IdCliente = db.Column(db.Integer, primary_key=True)
-    IdTipoCliente = db.Column(db.Integer, db.ForeignKey('Tipo_Cliente.IdTipoCliente'), nullable=False)
-    CC_NIT = db.Column(db.String(50), nullable = False)
-    Nombres = db.Column(db.String(100), nullable = False)
-    IdCiudad = db.Column(db.Integer, nullable = False)
-    Direccion = db.Column(db.String(150), nullable = False)
-    email = db.Column(db.String(100), nullable = False)
-    telefono = db.Column(db.String(50), nullable = False)
-
-    tipo_cliente = db.relationship('TipoCliente', backref='clientes')
-    
-
 
 
 # ENDPOINTS =======================================================================
@@ -138,17 +111,6 @@ def actualizar_cliente(cliente_id):
             return render_template('clientes/actualizar_cliente.html', cliente=cliente, tiposCliente = tiposCliente, ciudades = ciudades)
     else:
         return "Cliente no encontrado", 404
-
-
-
-
-
-
-
-
-
-
-
 
 
 #Ejecucion
