@@ -5,7 +5,7 @@
 
     <h1 class= "text-center">Listado de Clientes</h1>
     <div class="head-buttons">
-        <a class="btn btn-success btn-sm" href="{{ url_for('crear_cliente')}}">Crear</a>
+        <a class="btn btn-success btn-sm" href="{{ url_for('clientes_bp.crear_cliente')}}">Crear</a>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
@@ -36,16 +36,16 @@
                 <td>{{ cliente.email }}</td>
                 <td>{{ cliente.telefono }}</td>
                 <td>
-                    <form action="{{ url_for('detalleClientes', cliente_id=cliente.IdCliente) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <form action="{{ url_for('clientes_bp.detalleClientes', cliente_id=cliente.IdCliente) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                     <button type="submit" class="btn btn-info btn-sm">Detalles</button>
                   </form>
                   
-                  <form action="{{ url_for('actualizar_cliente', cliente_id=cliente.IdCliente)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                  <form action="{{ url_for('clientes_bp.actualizar_cliente', cliente_id=cliente.IdCliente)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
                   </form>
                
                   
-                  <form action="{{ url_for('eliminarCliente', cliente_id=cliente.IdCliente) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
+                  <form action="{{ url_for('clientes_bp.eliminarCliente', cliente_id=cliente.IdCliente) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
                   <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
                   </form>  
                 </td>
