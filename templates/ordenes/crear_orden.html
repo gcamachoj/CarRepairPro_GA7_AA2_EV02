@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+                
+    <h1 class="text-center">
+        Registrar nueva Orden
+    </h1>      
+    
+        <form action="/ordenes/guardar_orden" method="POST" class="form-principal">  
+            
+            <div class="campos">
+               
+                <div class="caja">
+                    <label for="" class="label">
+                        Cod. Orden
+                    </label>
+                    <input type="text" class="campo" name="InputIdOrden" id="InputIdOrden" disabled>
+                </div>
+                
+                          
+                <div class="caja">
+                    <label for="" class="label">
+                        IdCliente
+                    </label>
+                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente">
+                 </div>
+
+                 <div class="caja">
+                    <label for="" class="label">
+                        IdVehiculo
+                    </label>
+                    <input type="text" class="campo" name="InputIdVehiculo" id="InputIdVehiculo">
+                 </div>
+
+                 
+                 <div class="caja">
+                    <label for="" class="label">
+                        IdMecanico
+                    </label>
+                    <input type="text" class="campo" name="InputIdMecanico" id="InputIdMecanico">
+                 </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        IdEstado
+                    </label>
+                    <input type="text" class="campo" name="InputIdEstadoOS" id="InputIdEstadoOS">
+                </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        KM Entrada
+                    </label>
+                    <input type="text" class="campo" name="InputKM_Entrada" id="InputK_MEntrada">
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                        KM Salida
+                    </label>
+                    <input type="text" class="campo" name="InputKM_Salida" id="InputKM_Salida">
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        Fecha Ingreso
+                    </label>
+                    <input type="text" class="campo" name="InputFechaIngreso" id="InputFechaIngreso">
+                </div>
+                
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Fecha Finalizado
+                    </label>
+                    <input type="text" class="campo" name="InputFechaFinServicio" id="InputFechaFinServicio">
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                       Observaciones
+                    </label>
+                    <input type="text" class="campo" name="InputObservaciones" id="InputObservaciones">
+                </div>
+                
+
+            </div>  
+                
+                <div class=footer-buttons>
+                    <button type="submit" class="btn btn-success btn-sm text-center">
+                    Guardar
+                    </button>
+                    
+                    <!--<button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button> -->
+            </div>        
+        </form>
+
+        
+</div>
+
+
+{% endblock %}

@@ -24,4 +24,29 @@ def ordenes():
     return render_template('ordenes.html', ordenes = ordenes) 
 
 
-# ---- 2.1 Abrir formulario de crear vehiculo .............................................................
+# ---- 2.1 Abrir formulario de crear Orden .............................................................
+
+@ordenes_bp.route('/ordenes/crear') 
+def crear_orden():
+     return render_template('crear_orden.html')
+
+# ---- 2.2 Guardar datos de la orden # --------------------------------------------------------------------
+
+@ordenes_bp.route('/ordenes/guardar_orden', methods=["POST"])  #
+def guardar_orden():
+    orden = Orden(
+                      IdCliente         = request.form['InputIdCliente'],
+                      IdVehiculo        = request.form['InputIdVehiculo'], 
+                      IdMecanico        = request.form['InputIdMecanico'], 
+                      Modelo            = request.form['InputModelo'],
+                      IdEstadoOS        =request.form['InputIdEstadoOS'],
+                      KM_Entrada        = request.form['InputKM_Entrada'],  
+                      KM_Salida         = request.form['InputKM_Salida'],           
+                      FechaIngreso      = request.form['InputFechaIngreso'] ,
+                      FechaFinServicio  = request.form['InputFechaFinServicio'],
+                      Observaciones     = request.form['InputObservaciones'] 
+                      )
+    db.session.add(orden)
+    db.session.commit()
+    flash('Orden guardada exitosamente!', 'success')
+    return redirect(url_for('ordenes_bp.ordenes'))

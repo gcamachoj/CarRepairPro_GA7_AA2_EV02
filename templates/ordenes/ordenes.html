@@ -5,7 +5,7 @@
 
     <h1 class= "text-center">Listado de Ordenes</h1>
     <div class="head-buttons">
-        <a class="btn btn-success btn-sm" href="#">Crear</a>
+        <a class="btn btn-success btn-sm" href="{{ url_for('ordenes_bp.crear_orden')}}">Crear</a>
     </div>
     {% with messages = get_flashed_messages(with_categories=true) %}
     {% if messages %}
