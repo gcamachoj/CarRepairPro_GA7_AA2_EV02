@@ -11,8 +11,8 @@ from flask import Flask, redirect, url_for, render_template, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from extensions import db  # Importa db desde extensions.py
 # Registra las rutas del componente vehiculos en el archivo app.py
-from vehiculos.routes import vehiculos_bp 
-from ordenes.routes import ordenes_bp 
+from modulos.vehiculos.routes import vehiculos_bp 
+from modulos.ordenes.routes import ordenes_bp 
 from modelos import Cliente, TipoCliente, Ciudad # Importamos el modelo ciudad del archivo modelos
 
 # Instanciamos la aplicacion

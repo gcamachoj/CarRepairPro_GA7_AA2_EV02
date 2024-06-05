@@ -3,7 +3,7 @@ from modelos import Vehiculo, Marca, Tipos_Carroceria, Ciudad, Orden  # Importac
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
 
 # Define un blueprint para las rutas de los templates de vehículos
-ordenes_bp = Blueprint('ordenes_bp', __name__, template_folder='../templates/ordenes')
+ordenes_bp = Blueprint('ordenes_bp', __name__, template_folder='../../templates/ordenes')
 
 
 #========================================================================================================
