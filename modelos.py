@@ -69,9 +69,11 @@ class Ciudad(db.Model):
 class Empleado(db.Model):
     __tablename__       = 'empleados'
     IdEmpleado          = db.Column(db.Integer, primary_key  =True)
+    CC                  = db.Column(db.String, nullable = False)
     IdRol               = db.Column(db.Integer, nullable = False)
     Nombres             = db.Column(db.String(100), nullable = False)
     Apellidos           = db.Column(db.String(100), nullable = False)
+    IdCargo             = db.Column(db.Integer, nullable = False)
     Direccion           = db.Column(db.String(100), nullable = False)
     Email               = db.Column(db.String(100), nullable = False)
     Telefono            = db.Column(db.String(45), nullable = False)
@@ -80,12 +82,17 @@ class Empleado(db.Model):
 
 # Se crea el modelo Ordenes de Servicio
 class Orden(db.Model):
-   __tablename__ = 'ordenes'
-   IdOrden =           db.Column(db.Integer, primary_key=True)
-   IdCliente =         db.Column(db.Integer, db.ForeignKey('clientes.IdCliente'), nullable = False )   
-   KM_Entrada =        db.Column(db.Integer, nullable = False)
-   KM_Salida =         db.Column(db.Integer, nullable = True)
-   FechaIngreso =      db.Column(db.DateTime, nullable = False)
-   FechaFinServicio =  db.Column(db.Integer, nullable = True)
-   Observaciones =     db.Column(db.String(300), nullable = True)
-    ## faltan campos foraneos por definir
+   __tablename__        = 'ordenes'
+   IdOrden              =  db.Column(db.Integer, primary_key=True)
+   IdCliente            =  db.Column(db.Integer, db.ForeignKey('clientes.IdCliente'), nullable = False )   
+   KM_Entrada           =  db.Column(db.Integer, nullable = False)
+   KM_Salida            =  db.Column(db.Integer, nullable = True)
+   FechaIngreso         =  db.Column(db.DateTime, nullable = False)
+   FechaFinServicio     =  db.Column(db.Integer, nullable = True)
+   Observaciones        =  db.Column(db.String(300), nullable = True)
+
+# Se define el modelo de la tabla Cargos
+class Cargo(db.Model):
+    __tablename__ = 'cargos'
+    IdCargo             = db.Column(db.Integer, primar_key = True)
+    Cargo               = db.Column(db.String())      
