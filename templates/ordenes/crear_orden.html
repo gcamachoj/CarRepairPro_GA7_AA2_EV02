@@ -18,21 +18,30 @@
                     </label>
                     <input type="text" class="campo" name="InputIdOrden" id="InputIdOrden" disabled>
                 </div>
+                                             
                 
-                          
                 <div class="caja">
                     <label for="" class="label">
                         IdCliente
                     </label>
-                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente">
+                    <select class="campo" name="InputIdCliente" id="InputIdCliente">
+                        {% for cliente in clientes %}
+                        <option value="{{ cliente.IdCliente }}">{{ cliente.Nombre }}</option>
+                        {% endfor %}
+                    </select>
                  </div>
-
+                
                  <div class="caja">
                     <label for="" class="label">
                         IdVehiculo
                     </label>
-                    <input type="text" class="campo" name="InputIdVehiculo" id="InputIdVehiculo">
-                 </div>
+                    <select class="campo" name="InputIdVehiculo" id="InputIdVehiculo">
+                        {% for vehiculo in vehiculos %}
+                        <option value="{{ vehiculo.IdVehiculo }}">{{ vehiculo.Placa }}</option>
+                        {% endfor %}
+                    </select>
+                    
+                </div>
 
                  
                  <div class="caja">

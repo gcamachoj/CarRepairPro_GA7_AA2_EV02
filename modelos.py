@@ -16,7 +16,7 @@ class Cliente(db.Model):
     IdCliente = db.Column(db.Integer, primary_key=True)
     IdTipoCliente = db.Column(db.Integer, db.ForeignKey('Tipo_Cliente.IdTipoCliente'), nullable=False)
     CC_NIT = db.Column(db.String(50), nullable = False)
-    Nombres = db.Column(db.String(100), nullable = False)
+    Nombre = db.Column(db.String(100), nullable = False)
     IdCiudad = db.Column(db.Integer, nullable = False)
     Direccion = db.Column(db.String(150), nullable = False)
     email = db.Column(db.String(100), nullable = False)
@@ -63,6 +63,20 @@ class Ciudad(db.Model):
     vehiculos =         db.relationship('Vehiculo', backref='ciudad_vehiculo', lazy=True)
     # Se estabece referencia ciudad_vehiculo con la tabla vehiculos para usarla en el front
 
+
+# Se define el modelo Empleados
+
+class Empleado(db.Model):
+    __tablename__       = 'empleados'
+    IdEmpleado          = db.Column(db.Integer, primary_key  =True)
+    IdRol               = db.Column(db.Integer, nullable = False)
+    Nombres             = db.Column(db.String(100), nullable = False)
+    Apellidos           = db.Column(db.String(100), nullable = False)
+    Direccion           = db.Column(db.String(100), nullable = False)
+    Email               = db.Column(db.String(100), nullable = False)
+    Telefono            = db.Column(db.String(45), nullable = False)
+    IdEstado            = db.Column(db.Integer, nullable = False)
+    IdCiudad            = db.Column(db.Integer, nullable = False)
 
 # Se crea el modelo Ordenes de Servicio
 class Orden(db.Model):

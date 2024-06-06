@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
-from modelos import Vehiculo, Marca, Tipos_Carroceria, Ciudad, Orden  # Importacion de modelos de datos del orm
+from modelos import Vehiculo, Marca, Tipos_Carroceria, Ciudad, Orden, Cliente  # Importacion de modelos de datos del orm
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
 
 # Define un blueprint para las rutas de los templates de vehículos
@@ -28,7 +28,12 @@ def ordenes():
 
 @ordenes_bp.route('/ordenes/crear') 
 def crear_orden():
-     return render_template('crear_orden.html')
+     clientes = Cliente.query.all()
+     vehiculos = Vehiculo.query.all()
+    
+     return render_template('crear_orden.html', clientes = clientes, vehiculos = vehiculos)
+
+
 
 # ---- 2.2 Guardar datos de la orden # --------------------------------------------------------------------
 

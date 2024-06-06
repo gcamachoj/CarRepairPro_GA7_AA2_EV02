@@ -3,6 +3,7 @@ from flask import Blueprint, render_template, request, flash, redirect, url_for
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
 from modelos import Cliente, Ciudad, TipoCliente
 
+
 clientes_bp = Blueprint('clientes_bp', __name__, template_folder = '../../templates/clientes')
 
 
@@ -26,7 +27,6 @@ def crear_cliente():
     return render_template('clientes/crear_cliente.html', ciudades=ciudades, tiposCliente=tiposCliente)
 
 
-
 # -- FORMULARIO GUARDAR CLIENTE  ------------------------------------------------------
 
 @clientes_bp.route('/clientes/guardar_cliente', methods=["POST"])
@@ -34,7 +34,7 @@ def guardar_cliente():
     cliente = Cliente(
                       IdTipoCliente=request.form['InputIdTipoCliente'], 
                       CC_NIT = request.form['InputCC_Nit'],
-                      Nombres = request.form['InputNombres'], 
+                      Nombre = request.form['InputNombre'], 
                       IdCiudad= request.form['InputIdCiudad'], 
                       Direccion=request.form['InputDireccion'],
                       email=request.form['InputEmail'],
