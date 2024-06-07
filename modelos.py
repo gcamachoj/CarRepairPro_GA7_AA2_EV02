@@ -84,11 +84,14 @@ class Empleado(db.Model):
 class Orden(db.Model):
    __tablename__        = 'ordenes'
    IdOrden              =  db.Column(db.Integer, primary_key=True)
-   IdCliente            =  db.Column(db.Integer, db.ForeignKey('clientes.IdCliente'), nullable = False )   
+   IdCliente            =  db.Column(db.Integer, db.ForeignKey('clientes.IdCliente'), nullable = False ) 
+   IdVehiculo           =  db.Column(db.Integer, db.ForeignKey('vehiculos.IdVehiculo'), nullable = False)  
+   IdMecanico           =  db.Column(db.Integer, db.ForeignKey('empleados.IdEmpleado'), nullable = False)
+   IdEstadoOS           =  db.Column(db.Integer, db.ForeignKey('estado_os.IdEstadoOS'), nullable = False)
    KM_Entrada           =  db.Column(db.Integer, nullable = False)
    KM_Salida            =  db.Column(db.Integer, nullable = True)
    FechaIngreso         =  db.Column(db.DateTime, nullable = False)
-   FechaFinServicio     =  db.Column(db.Integer, nullable = True)
+   FechaFinServicio     =  db.Column(db.DateTime, nullable = True)
    Observaciones        =  db.Column(db.String(300), nullable = True)
 
 # Se define el modelo de la tabla Cargos

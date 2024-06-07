@@ -40,19 +40,35 @@ def crear_orden():
 
 @ordenes_bp.route('/ordenes/guardar_orden', methods=["POST"])  #
 def guardar_orden():
-    orden = Orden(
-                      IdCliente         = request.form['InputIdCliente'],
-                      IdVehiculo        = request.form['InputIdVehiculo'], 
-                      IdMecanico        = request.form['InputIdMecanico'], 
-                      Modelo            = request.form['InputModelo'],
-                      IdEstadoOS        =request.form['InputIdEstadoOS'],
-                      KM_Entrada        = request.form['InputKM_Entrada'],  
-                      KM_Salida         = request.form['InputKM_Salida'],           
-                      FechaIngreso      = request.form['InputFechaIngreso'] ,
-                      FechaFinServicio  = request.form['InputFechaFinServicio'],
-                      Observaciones     = request.form['InputObservaciones'] 
-                      )
-    db.session.add(orden)
-    db.session.commit()
-    flash('Orden guardada exitosamente!', 'success')
-    return redirect(url_for('ordenes_bp.ordenes'))
+    try:
+        # Convertir KM_Salida a None si está vacío
+        km_salida = request.form.get('InputKM_Salida')
+        fecha_fin_servicio = request.form.get('InputFechaFinServicio')
+        if km_salida == '':
+            km_salida = None
+        else:
+            km_salida = int(km_salida)  # Convertir a entero si no está vacío
+
+        if fecha_fin_servicio =='':
+            fecha_fin_servicio = None
+
+        orden = Orden(
+            IdCliente=request.form['InputIdCliente'],
+            IdVehiculo=request.form['InputIdVehiculo'], 
+            IdMecanico=request.form['InputIdMecanico'], 
+            IdEstadoOS=request.form['InputIdEstadoOS'],
+            KM_Entrada=request.form['InputKM_Entrada'],  
+            KM_Salida=km_salida,  # Asignar el valor modificado de KM_Salida
+            FechaIngreso=request.form['InputFechaIngreso'],
+            FechaFinServicio=fecha_fin_servicio,
+            Observaciones=request.form['InputObservaciones'] 
+        )
+        db.session.add(orden)
+        db.session.commit()
+        flash('Orden guardada exitosamente!', 'success')
+        return redirect(url_for('ordenes_bp.ordenes'))
+    except Exception as e:
+        db.session.rollback()
+        flash('Error al guardar la orden', 'error')
+        print(e)  # Puedes imprimir el error para depurar si algo sale mal
+        return redirect(url_for('ordenes_bp.ordenes'))
