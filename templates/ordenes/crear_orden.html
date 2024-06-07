@@ -29,9 +29,10 @@
                         <option value="{{ cliente.IdCliente }}">{{ cliente.Nombre }}</option>
                         {% endfor %}
                     </select>
-                 </div>
+                </div>
                 
-                 <div class="caja">
+                
+                <div class="caja">
                     <label for="" class="label">
                         IdVehiculo
                     </label>
@@ -39,24 +40,31 @@
                         {% for vehiculo in vehiculos %}
                         <option value="{{ vehiculo.IdVehiculo }}">{{ vehiculo.Placa }}</option>
                         {% endfor %}
-                    </select>
-                    
+                    </select>                   
                 </div>
 
                  
-                 <div class="caja">
+                <div class="caja">
                     <label for="" class="label">
                         IdMecanico
                     </label>
-                    <input type="text" class="campo" name="InputIdMecanico" id="InputIdMecanico">
-                 </div>
+                    <select class="campo" name="InputIdMecanico" id="InputIdMecanico">
+                        {% for empleado in empleados %}
+                        <option value="{{ empleado.IdEmpleado }}">{{ empleado.Nombres }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
 
 
                 <div class="caja">
                     <label for="" class="label">
                         IdEstado
                     </label>
-                    <input type="text" class="campo" name="InputIdEstadoOS" id="InputIdEstadoOS">
+                    <select class="campo" name="InputIdEstadoOS" id="InputIdEstadoOS">
+                        {% for estado_os in estados_os %}
+                    <option value="{{ estado_os.IdEstadoOS }}">{{ estado_os.EstadoOS }}</option>
+                    {% endfor %}
+                    </select>
                 </div>
 
 
@@ -79,7 +87,7 @@
                     <label for="" class="label">
                         Fecha Ingreso
                     </label>
-                    <input type="text" class="campo" name="InputFechaIngreso" id="InputFechaIngreso">
+                    <input type="date" class="campo" name="InputFechaIngreso" id="InputFechaIngreso">
                 </div>
                 
 
@@ -87,18 +95,19 @@
                     <label for="" class="label">
                         Fecha Finalizado
                     </label>
-                    <input type="text" class="campo" name="InputFechaFinServicio" id="InputFechaFinServicio">
+                    <input type="date" class="campo" name="InputFechaFinServicio" id="InputFechaFinServicio">
                 </div>
-
-                <div class="caja">
+                
+                
+                <div class="caja memo">
                     <label for="" class="label">
                        Observaciones
                     </label>
-                    <input type="text" class="campo" name="InputObservaciones" id="InputObservaciones">
+                    <textarea class="campo" name="InputObservaciones" id="InputObservaciones"></textarea>
                 </div>
                 
 
-            </div>  
+         
                 
                 <div class=footer-buttons>
                     <button type="submit" class="btn btn-success btn-sm text-center">
@@ -106,7 +115,8 @@
                     </button>
                     
                     <!--<button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button> -->
-            </div>        
+                </div>
+            </div>     
         </form>
 
         

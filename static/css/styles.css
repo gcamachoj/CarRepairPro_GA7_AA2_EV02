@@ -74,9 +74,19 @@ header{
     color: rgb(61, 60, 60);
 }
 
+.footer-buttons {
+    text-align: center;
+    padding: 10px;
+    display: block;
+    width: 100%;  /* Asegura que ocupe todo el ancho disponible */
+    clear: both;  /* Limpia flotados anteriores */
+}
+
+
 .container .footer-buttons{
     text-align:center;
     padding: 10px;
+    display: block;
 }
 
 #footer-buttons{
@@ -260,6 +270,12 @@ aside .contenido-aside{
 
 }  
 
+.caja.memo {
+    width: 100%;
+    
+}
+
+
 .imagen-form{
     display: block;
     margin-top: 20px;
@@ -271,6 +287,16 @@ aside .contenido-aside{
     justify-content: center;
     margin: auto;
 }
+
+textarea {
+    width: 100%;
+    height: 150px; /* Ajusta la altura según sea necesario */
+    resize: vertical; /* Permite redimensionar verticalmente */
+}
+
+
+
+
 .imagen-form img{
     display: flex;
   width: 90%;
@@ -344,6 +370,7 @@ aside {
 .campos{
     display: block;
 }
+
 
 
 }

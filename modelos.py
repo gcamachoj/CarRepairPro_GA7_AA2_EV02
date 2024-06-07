@@ -70,7 +70,7 @@ class Empleado(db.Model):
     __tablename__       = 'empleados'
     IdEmpleado          = db.Column(db.Integer, primary_key  =True)
     CC                  = db.Column(db.String, nullable = False)
-    IdRol               = db.Column(db.Integer, nullable = False)
+    IdCargo             = db.Column(db.Integer, nullable = False)
     Nombres             = db.Column(db.String(100), nullable = False)
     Apellidos           = db.Column(db.String(100), nullable = False)
     IdCargo             = db.Column(db.Integer, nullable = False)
@@ -93,6 +93,14 @@ class Orden(db.Model):
 
 # Se define el modelo de la tabla Cargos
 class Cargo(db.Model):
-    __tablename__ = 'cargos'
-    IdCargo             = db.Column(db.Integer, primar_key = True)
+    __tablename__       = 'cargos'
+    IdCargo             = db.Column(db.Integer, primary_key = True)
     Cargo               = db.Column(db.String())      
+
+# Se define el modelo EstadoOS
+
+class Estado_os(db.Model):
+    __tablename__       = 'estado_os'
+    IdEstadoOS          = db.Column(db.Integer, primary_key = True)
+    EstadoOS            = db.Column(db.String(20), nullable = False)
+
