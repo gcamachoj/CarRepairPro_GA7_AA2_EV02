@@ -42,6 +42,13 @@ def login():
 def index():
     return render_template('index.html')
  
+# Moduos que no están en el alcance del proyecto
+@app.route('/empleados')
+def alcance_limitado():
+    return render_template('demo/demo.html')
+
+
+
 #Ejecucion
     
 if __name__ == "__main__":
