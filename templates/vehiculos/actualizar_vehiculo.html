@@ -34,7 +34,7 @@
                     </label>
                     <select class="campo" name="InputIdMarca" id="InputIdMarca">
                     {% for marca in marcas %}
-                        <option value = "{{ marca.IdMarca }}" {% if marcas.IdMarca == vehiculo.IdMarca %} selected {% endif %}> 
+                        <option value = "{{ marca.IdMarca }}" {% if marca.IdMarca == vehiculo.IdMarca %} selected {% endif %}> 
                             {{ marca.Marca }}
                         </option> 
                     {% endfor %}  
@@ -72,7 +72,7 @@
                     </label>
                     <select class="campo" name="InputIdTipoCarroceria" id="InputIdTipoCarroceria">
                     {% for tipo_carroceria in tipos_carroceria %}
-                        <option value = "{{ tipo_carroceria.IdTipoCarroceria }}" {% if tipos_carroceria.IdTipoCarroceria == vehiculo.IdTipoCarroceria %} selected {% endif %}>
+                        <option value = "{{ tipo_carroceria.IdTipoCarroceria }}" {% if tipo_carroceria.IdTipoCarroceria == vehiculo.IdTipoCarroceria %} selected {% endif %}>
                             {{ tipo_carroceria.TipoCarroceria }}
                         </option> 
                     {% endfor %}  

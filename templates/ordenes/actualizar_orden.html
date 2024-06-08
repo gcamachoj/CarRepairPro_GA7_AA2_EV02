@@ -1,0 +1,133 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+                
+    <h1 class="text-center">
+        Actualizar datos de la Orden
+    </h1>      
+    
+        <form action="{{ url_for('ordenes_bp.actualizar_orden', orden_id=orden.IdOrden) }}" method="POST" class="form-principal">  
+            
+            <div class="campos">
+               
+                <div class="caja">
+                    <label for="" class="label">
+                        Cod. Orden
+                    </label>
+                    <input type="text" class="campo" name="InputIdOrden" id="InputIdOrden" disabled value="{{ orden.IdOrden}}">
+                </div>
+                                             
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        IdCliente
+                    </label>
+                    <select class="campo" name="InputIdCliente" id="InputIdCliente">
+                        {% for cliente in clientes %}
+                        <option value="{{ cliente.IdCliente }}" {% if cliente.IdCliente == orden.IdCliente %} selected {% endif %}>
+                            {{ cliente.Nombre }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        IdVehiculo
+                    </label>
+                    <select class="campo" name="InputIdVehiculo" id="InputIdVehiculo">
+                        {% for vehiculo in vehiculos %}
+                        <option value="{{ vehiculo.IdVehiculo }}" {% if vehiculo.IdVehiculo == orden.IdVehiculo %} selected {% endif %}>
+                            {{ vehiculo.Placa }}
+                        </option>
+                        {% endfor %}
+                    </select>                   
+                </div>
+
+                 
+                <div class="caja">
+                    <label for="" class="label">
+                        IdMecanico
+                    </label>
+                    <select class="campo" name="InputIdMecanico" id="InputIdMecanico">
+                        {% for empleado in empleados %}
+                        <option value="{{ empleado.IdEmpleado }}" {% if empleado.IdEMpleado == orden.IdMecanico %} selected {% endif %}>
+                            {{ empleado.Nombres }}
+                        </option>
+                        {% endfor %}
+                    </select>
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                        IdEstado Orden
+                    </label>
+                    <select class="campo" name="InputIdEstadoOS" id="InputIdEstadoOS">
+                        {% for estado_os in estados_os %}
+                    <option value="{{ estado_os.IdEstadoOS }}" {%if estado_os.IdEstadoOS == orden.IdEstadoOS %} selected {% endif %}>
+                        {{ estado_os.EstadoOS }}
+                    </option>
+                    {% endfor %}
+                    </select>
+                </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        KM Entrada
+                    </label>
+                    <input type="text" class="campo" name="InputKM_Entrada" id="InputKM_Entrada" value = "{{ orden.KM_Entrada }}">
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                        KM Salida
+                    </label>
+                    <input type="text" class="campo" name="InputKM_Salida" id="InputKM_Salida" value="{{ orden.KM_Salida }}">
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        Fecha Ingreso
+                    </label>
+                    <input type="date" class="campo" name="InputFechaIngreso" id="InputFechaIngreso" value="{{ orden.FechaIngreso }}">
+                </div>
+                
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Fecha Finalizado
+                    </label>
+                    <input type="date" class="campo" name="InputFechaFinServicio" id="InputFechaFinServicio" value = "{{ orden.FechaFinServicio }}">
+                </div>
+                
+                
+                <div class="caja memo">
+                    <label for="" class="label">
+                       Observaciones
+                    </label>
+                    <textarea class="campo" name="InputObservaciones" id="InputObservaciones">{{ orden.Observaciones }}</textarea>
+                </div>
+                
+
+         
+                
+                <div class=footer-buttons>
+                    <button type="submit" class="btn btn-success btn-sm text-center">
+                    Guardar
+                    </button>
+                    
+                    <!--<button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button> -->
+                </div>
+            </div>     
+        </form>
+
+        
+</div>
+
+
+{% endblock %}
