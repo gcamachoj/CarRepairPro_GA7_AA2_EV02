@@ -72,3 +72,11 @@ def guardar_orden():
         flash('Error al guardar la orden', 'error')
         print(e)  # Puedes imprimir el error para depurar si algo sale mal
         return redirect(url_for('ordenes_bp.ordenes'))
+    
+# 3.---- Filtrar vehiculo -----------------------------------------------------------------------------------
+
+@ordenes_bp.route('/ordenes/<int:orden_id>')
+def detalleOrden(orden_id):
+    orden= Orden.query.get_or_404(orden_id)
+
+    return render_template('ordenes/detalle_orden.html', orden=orden) 

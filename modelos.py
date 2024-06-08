@@ -21,8 +21,11 @@ class Cliente(db.Model):
     Direccion = db.Column(db.String(150), nullable = False)
     email = db.Column(db.String(100), nullable = False)
     telefono = db.Column(db.String(50), nullable = False)
-
     tipo_cliente = db.relationship('TipoCliente', backref='clientes')
+    ordenes = db.relationship('Orden', backref='cliente', lazy=True) # Se relaciona Cliente con Modelo Orden para obtener los clientes con el string {{ orden.cliente.nombres }}
+
+
+
 class Vehiculo(db.Model):
     __tablename__ =     'vehiculos'
     IdVehiculo =        db.Column(db.Integer, primary_key = True)
@@ -36,6 +39,8 @@ class Vehiculo(db.Model):
     # tipos_carroceria es la referencia creada en la relación. ver modelo Tipos_carroceria
     IdCiudad =          db.Column(db.Integer, db.ForeignKey('ciudades.IdCiudad'), nullable = False)
     # Crea el campo foraneo IdCiudad y Establece la relacion con la tabla ciudad.
+    # crea relacion inversa para el orm con tabla ordenes
+    ordenes =           db.relationship('Orden', backref='vehiculo', lazy=True) 
 
     #Crear el modelo Marca
 class Marca(db.Model):
@@ -79,7 +84,8 @@ class Empleado(db.Model):
     Telefono            = db.Column(db.String(45), nullable = False)
     IdEstado            = db.Column(db.Integer, nullable = False)
     IdCiudad            = db.Column(db.Integer, nullable = False)
-
+    # Creamos relacion inversa para el ORM con la tabla ordenes
+    ordenes             = db.relationship('Orden', backref = 'empleado', lazy = True)
 # Se crea el modelo Ordenes de Servicio
 class Orden(db.Model):
    __tablename__        = 'ordenes'
@@ -106,4 +112,4 @@ class Estado_os(db.Model):
     __tablename__       = 'estado_os'
     IdEstadoOS          = db.Column(db.Integer, primary_key = True)
     EstadoOS            = db.Column(db.String(20), nullable = False)
-
+    ordenes             = db.relationship('Orden', backref = 'estado_os', lazy = True)

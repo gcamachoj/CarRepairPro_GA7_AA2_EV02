@@ -20,12 +20,11 @@
         <thead>
             <tr>
                 <th>IdOrden</th>
-                <th>IdCliente</th>
-                <th>IdVehiculo</th>
-                <th>IdMecanico</th>
-                <th>IdEstadoOS</th>
+                <th>Estado</th>
+                <th>Cliente</th>
+                <th>Vehiculo</th>
+                <th>Mecánico</th>
                 <th>KM Entrada</th>
-                <th>KM Salida</th>
                 <th>Fecha Ingreso</th>
                 <th>Fecha Cierre</th>
                 <th>Observaciones</th>
@@ -34,20 +33,19 @@
             </tr>
         </thead>
         <tbody>
-            {% for vehiculo in vehiculos %}
+            {% for orden in ordenes %}
             <tr>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>
-                <td></td>    
-                <td></td>
-                <td></td>    
-                <td></td>    
+                <td>{{ orden.IdOrden }}</td>
+                <td>{{ orden.estado_os.EstadoOS }}</td>
+                <td>{{ orden.cliente.Nombre }}</td>
+                <td>{{ orden.vehiculo.Placa }}</td>
+                <td>{{ orden.empleado.Nombres }}</td>
+                <td>{{ orden.KM_Entrada }}</td>
+                <td>{{ orden.FechaIngreso }}</td>
+                <td>{{ orden.FechaFinServicio }}</td>    
+                <td>{{ orden.Observaciones }}</td>    
                 <td>
-                    <form action="#" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <form action="{{ url_for('ordenes_bp.detalleOrden', orden_id=orden.IdOrden) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
                     <button type="submit" class="btn btn-info btn-sm">Detalles</button>
                   </form>
                   

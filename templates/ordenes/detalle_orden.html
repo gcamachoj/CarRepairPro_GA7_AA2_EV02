@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+                
+    <h1 class="text-center">
+        Registrar nueva Orden
+    </h1>      
+    
+        <form action="/ordenes" method="GET" class="form-principal">  
+            
+            <div class="campos">
+               
+                <div class="caja">
+                    <label for="" class="label">
+                        Cod. Orden
+                    </label>
+                    <input type="text" class="campo" name="InputIdOrden" id="InputIdOrden" disabled value = "{{ orden.IdOrden }}">
+                </div>
+                                             
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        IdCliente
+                    </label>
+                    <input type="text" class="campo" name="InputIdCliente" id="InputIdCliente" disabled value = "{{orden.cliente.Nombre}}">
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        IdVehiculo
+                    </label>
+                    <input type="text" class="campo" name="InputIdVehiculo" id="InputIdVehiculo" disabled value = "{{orden.vehiculo.Placa}}">
+                         
+                </div>
+
+                 
+                <div class="caja">
+                    <label for="" class="label">
+                        IdMecanico
+                    </label>
+                    <input type="text" class="campo" name="InputIdMecanico" id="InputIdMecanico" disabled value="{{ orden.empleado.Nombres}}">
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                        IdEstado Orden
+                    </label>
+                    <input type="text" class="campo" name="InputIdEstadoOS" id="InputIdEstadoOS" disabled value= " {{orden.estado_os.EstadoOS}} ">
+                </div>
+
+
+                <div class="caja">
+                    <label for="" class="label">
+                        KM Entrada
+                    </label>
+                    <input type="text" class="campo" name="InputKM_Entrada" id="InputKM_Entrada" disabled value = "{{ orden.KM_Entrada }}">
+                </div>
+
+                <div class="caja">
+                    <label for="" class="label">
+                        KM Salida
+                    </label>
+                    <input type="text" class="campo" name="InputKM_Salida" id="InputKM_Salida" disabled value = "{{ orden.KM_Salida }}">
+                </div>
+                
+                
+                <div class="caja">
+                    <label for="" class="label">
+                        Fecha Ingreso
+                    </label>
+                    <input type="date" class="campo" name="InputFechaIngreso" id="InputFechaIngreso" disabled value = "{{ orden.FechaIngreso }}">
+                </div>
+                
+
+                <div class="caja">
+                    <label for="" class="label">
+                        Fecha Finalizado
+                    </label>
+                    <input type="date" class="campo" name="InputFechaFinServicio" id="InputFechaFinServicio" disabled value = "{{ orden.FechaFinServicio }}">
+                </div>
+                
+                
+                <div class="caja memo">
+                    <label for="" class="label">
+                       Observaciones
+                    </label>
+                    <textarea type="text" class="campo" name="InputObservaciones" id="InputObservaciones" disabled>{{ orden.Observaciones }}</textarea>
+                  
+                </div>
+                
+
+         
+                
+                <div class=footer-buttons>
+                    <button type="submit" class="btn btn-primary btn-sm text-center">
+                    regresar
+                    </button>
+                    
+                    <!--<button onClick="prueba()" class="btn btn-success btn-sm text-center">prueba</button> -->
+                </div>
+            </div>     
+        </form>
+
+        
+</div>
+
+
+{% endblock %}
