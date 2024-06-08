@@ -96,7 +96,7 @@ def actualizar_orden(orden_id):
             print("Datos recibidos:", request.form)
 
             # Actualizar datos 
-   # Actualizar datos
+
             orden.IdCliente = request.form['InputIdCliente']
             orden.IdVehiculo = request.form['InputIdVehiculo']
             orden.IdMecanico = request.form['InputIdMecanico']
@@ -126,4 +126,13 @@ def actualizar_orden(orden_id):
             orden=orden, clientes=clientes, vehiculos=vehiculos, empleados=empleados, estados_os=estados_os)
     else:
         return "Orden no encontrado", 404
+    
+    # ---- 5. Eliminar Orden -------------------------------------------------------------------------------------------
+
+@ordenes_bp.route('/eliminar-orden/<int:orden_id>')
+def eliminar_Orden(orden_id):
+    Orden.query.filter_by(IdOrden = int(orden_id)).delete()
+    db.session.commit()   
+    flash('Orden de Servicio eliminada exitosamente!', 'success')
+    return redirect(url_for('ordenes_bp.ordenes')) 
     
