@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 from modelos import Vehiculo, Marca, Tipos_Carroceria, Ciudad, Orden, Cliente, Empleado, Estado_os  # Importacion de modelos de datos del orm
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
-
+from decorators import login_required # importa funcionalidad para validar inicio de sesion
 # Define un blueprint para las rutas de los templates de vehículos
 ordenes_bp = Blueprint('ordenes_bp', __name__, template_folder='../../templates/ordenes')
 
@@ -13,6 +13,7 @@ ordenes_bp = Blueprint('ordenes_bp', __name__, template_folder='../../templates/
 # ----1. Listar ordenes ---------------------------------------------------------------------------------
 
 @ordenes_bp.route('/ordenes') 
+@login_required
 def ordenes():
     template_folder_path = ordenes_bp.template_folder
     ordenes = Orden.query.all() 
@@ -27,6 +28,7 @@ def ordenes():
 # ---- 2.1 Abrir formulario de crear Orden .............................................................
 
 @ordenes_bp.route('/ordenes/crear') 
+@login_required
 def crear_orden():
      clientes = Cliente.query.all()
      vehiculos = Vehiculo.query.all()
@@ -39,6 +41,7 @@ def crear_orden():
 # ---- 2.2 Guardar datos de la orden # --------------------------------------------------------------------
 
 @ordenes_bp.route('/ordenes/guardar_orden', methods=["POST"])  #
+@login_required
 def guardar_orden():
     try:
         # Convertir KM_Salida a None si está vacío
@@ -76,12 +79,14 @@ def guardar_orden():
 # 3.---- Filtrar Orden  (Detalles)-------------------------------------------------------------------------------
 
 @ordenes_bp.route('/ordenes/<int:orden_id>')
+@login_required
 def detalleOrden(orden_id):
     orden= Orden.query.get_or_404(orden_id)
 
     return render_template('ordenes/detalle_orden.html', orden=orden) 
 # 4 ---- actualizar Orden ---------------------------------------------------------------------------------
 @ordenes_bp.route('/actualizar-orden/<int:orden_id>', methods=['GET','POST'])
+@login_required
 def actualizar_orden(orden_id):
     orden = Orden.query.filter_by(IdOrden = int(orden_id)).first()
     clientes = Cliente.query.all()
@@ -130,6 +135,7 @@ def actualizar_orden(orden_id):
     # ---- 5. Eliminar Orden -------------------------------------------------------------------------------------------
 
 @ordenes_bp.route('/eliminar-orden/<int:orden_id>')
+@login_required
 def eliminar_Orden(orden_id):
     Orden.query.filter_by(IdOrden = int(orden_id)).delete()
     db.session.commit()   

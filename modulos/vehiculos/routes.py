@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, flash, url_for
 from modelos import Vehiculo, Marca, Tipos_Carroceria, Ciudad  # Importacion de modelos de datos del orm
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
-
+from decorators import login_required # importa validador de inicio de sesión
 # Define un blueprint para las rutas de los templates de vehículos
 vehiculos_bp = Blueprint('vehiculos_bp', __name__, template_folder='../../templates/vehiculos')
 
@@ -13,6 +13,7 @@ vehiculos_bp = Blueprint('vehiculos_bp', __name__, template_folder='../../templa
 # ----1. Listar vehículos ---------------------------------------------------------------------------------
 
 @vehiculos_bp.route('/vehiculos') 
+@login_required
 def vehiculos():
     template_folder_path = vehiculos_bp.template_folder
     vehiculos = Vehiculo.query.all() 
@@ -27,6 +28,7 @@ def vehiculos():
 # ---- 2.1 Abrir formulario de crear vehiculo .............................................................
 
 @vehiculos_bp.route('/vehiculos/crear') 
+@login_required
 def crear_vehiculo():
     ciudades = Ciudad.query.all()
     marcas = Marca.query.all()
@@ -36,6 +38,7 @@ def crear_vehiculo():
 # ---- 2.2 Guardar datos del vehiculo # --------------------------------------------------------------------
 
 @vehiculos_bp.route('/vehiculos/guardar_vehiculo', methods=["POST"])  #
+@login_required
 def guardar_vehiculo():
     vehiculo = Vehiculo(
                       Placa = request.form['InputPlaca'],
@@ -54,6 +57,7 @@ def guardar_vehiculo():
 
 # 3.---- Filtrar vehiculo -----------------------------------------------------------------------------------
 @vehiculos_bp.route('/vehiculos/<int:vehiculo_id>')
+@login_required
 def detalleVehiculos(vehiculo_id):
     vehiculo= Vehiculo.query.get_or_404(vehiculo_id)
 
@@ -62,6 +66,7 @@ def detalleVehiculos(vehiculo_id):
 
 # 4 ---- actualizar Vehículo ---------------------------------------------------------------------------------
 @vehiculos_bp.route('/actualizar-vehiculo/<int:vehiculo_id>', methods=['GET','POST'])
+@login_required
 def actualizar_vehiculo(vehiculo_id):
     vehiculo = Vehiculo.query.filter_by(IdVehiculo = int(vehiculo_id)).first()
     marcas = Marca.query.all()
@@ -94,6 +99,7 @@ def actualizar_vehiculo(vehiculo_id):
 # ---- 5. Eliminar Vehículo -------------------------------------------------------------------------------------------
 
 @vehiculos_bp.route('/eliminar-vehiculo/<int:vehiculo_id>')
+@login_required
 def eliminarVehiculo(vehiculo_id):
     Vehiculo.query.filter_by(IdVehiculo = int(vehiculo_id)).delete()
     db.session.commit()   

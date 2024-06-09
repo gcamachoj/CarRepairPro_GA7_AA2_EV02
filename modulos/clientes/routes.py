@@ -2,7 +2,7 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
 from modelos import Cliente, Ciudad, TipoCliente
-
+from decorators import login_required
 
 clientes_bp = Blueprint('clientes_bp', __name__, template_folder = '../../templates/clientes')
 
@@ -13,6 +13,7 @@ clientes_bp = Blueprint('clientes_bp', __name__, template_folder = '../../templa
 #---LISTAR CLIENTES ---------------------------------------------------------------
 
 @clientes_bp.route('/clientes')
+@login_required
 def clientes():
     clientes = Cliente.query.all() # Consulta todos los clientes en la base de datos
     return render_template('clientes/clientes.html', clientes=clientes)
@@ -21,6 +22,7 @@ def clientes():
 # -- FORMULARIO CREAR CLIENTE ------------------------------------------------------
 
 @clientes_bp.route('/crear_cliente')
+@login_required
 def crear_cliente():
     ciudades = Ciudad.query.all()
     tiposCliente = TipoCliente.query.all()
@@ -30,6 +32,7 @@ def crear_cliente():
 # -- FORMULARIO GUARDAR CLIENTE  ------------------------------------------------------
 
 @clientes_bp.route('/clientes/guardar_cliente', methods=["POST"])
+@login_required
 def guardar_cliente():
     cliente = Cliente(
                       IdTipoCliente=request.form['InputIdTipoCliente'], 
@@ -47,6 +50,7 @@ def guardar_cliente():
 
 # ---DETALLE DE CLIENTE  ----------------------------------------------------------
 @clientes_bp.route('/clientes/<int:cliente_id>')
+@login_required
 def detalleClientes(cliente_id):
     cliente= Cliente.query.get_or_404(cliente_id)
     tiposCliente = TipoCliente.query.all()
@@ -56,6 +60,7 @@ def detalleClientes(cliente_id):
 #--- MODIFICAR DATOS CLIENTE ------------------------------------------------------
 
 @clientes_bp.route('/actualizar-cliente/<int:cliente_id>', methods=['GET','POST'])
+@login_required
 def actualizar_cliente(cliente_id):
     cliente = Cliente.query.filter_by(IdCliente = int(cliente_id)).first()
     tiposCliente = TipoCliente.query.all()
@@ -83,6 +88,7 @@ def actualizar_cliente(cliente_id):
 # ---ELIMINAR CLIENTE  ----------------------------------------------------------
 
 @clientes_bp.route('/eliminar-cliente/<int:cliente_id>')
+@login_required
 def eliminarCliente(cliente_id):
     Cliente.query.filter_by(IdCliente = int(cliente_id)).delete()
     db.session.commit()   

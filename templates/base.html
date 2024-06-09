@@ -12,7 +12,7 @@
         <aside> 
             <div class="contenido-aside">
                 <div class="titulo-menu">
-                    Menú
+                <a id="btn-aside-menu" href="{{ url_for('index')}}">Menú</a>
                 </div>
             
                 <div class="linea-normal">
@@ -31,7 +31,7 @@
                     <a href="{{ url_for('alcance_limitado')}}">Gestión de Personal Interno</a> 
                 </div>
                 
-                <div class="linea-normal padre">
+                <div class="linea-normal">
                     <a href="{{ url_for('alcance_limitado')}}">Parametrizaciones</a>         
                 </div>
                 
@@ -42,8 +42,8 @@
                     <a href="{{ url_for('alcance_limitado')}}">Maestro de Inventario</a>   
                 </div>
 
-                <div class="linea-normal" onclick="mensajeSalir()">
-                    Cerrar sesión
+                <div class="linea-normal">
+                    <a href="{{ url_for('logout')}}">Cerrar sesión</a>   
                 </div>
             </div> <!-- CIERRA DIV CONTENIDO ASIDE -->
         </aside> <!-- CIERRE ASIDE -->

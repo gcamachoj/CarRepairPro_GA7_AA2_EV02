@@ -16,54 +16,56 @@
         {% endfor %}
     {% endif %}
     {% endwith %}
-    <table class="table table-responsive table-striped table-hover">
-        <thead>
-            <tr>
-                <th>IdVehiculo</th>
-                <th>Placa</th>
-                <th>Marca</th>
-                <th>Línea</th>
-                <th>Modelo</th>
-                <th>Color</th>
-                <th>Tipo Carrocería</th>
-                <th>Ciudad</th>
+    <div class="table table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>IdVehiculo</th>
+                    <th>Placa</th>
+                    <th>Marca</th>
+                    <th>Línea</th>
+                    <th>Modelo</th>
+                    <th>Color</th>
+                    <th>Tipo Carrocería</th>
+                    <th>Ciudad</th>
+                    
+                    <th style="width: 200px;">Accion</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for vehiculo in vehiculos %}
+                <tr>
+                    <td>{{ vehiculo.IdVehiculo }}</td>
+                    <td>{{ vehiculo.Placa }}</td>
                 
-                <th style="width: 200px;">Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for vehiculo in vehiculos %}
-            <tr>
-                <td>{{ vehiculo.IdVehiculo }}</td>
-                <td>{{ vehiculo.Placa }}</td>
-               
-                <td>{{ vehiculo.marca.Marca}}</td>
+                    <td>{{ vehiculo.marca.Marca}}</td>
 
-                <td>{{ vehiculo.Linea }}</td>
-                <td>{{ vehiculo.Modelo }}</td>
-                <td>{{ vehiculo.Color }}</td>
-                <td>{{ vehiculo.tipo_carroceria.TipoCarroceria }}</td>    
-                <td>{{ vehiculo.ciudad_vehiculo.Ciudad }}</td>
+                    <td>{{ vehiculo.Linea }}</td>
+                    <td>{{ vehiculo.Modelo }}</td>
+                    <td>{{ vehiculo.Color }}</td>
+                    <td>{{ vehiculo.tipo_carroceria.TipoCarroceria }}</td>    
+                    <td>{{ vehiculo.ciudad_vehiculo.Ciudad }}</td>
 
 
-                <td>
-                    <form action="{{ url_for('vehiculos_bp.detalleVehiculos', vehiculo_id=vehiculo.IdVehiculo) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
-                    <button type="submit" class="btn btn-info btn-sm">Detalles</button>
-                  </form>
-                  
-                    <form action="{{ url_for('vehiculos_bp.actualizar_vehiculo', vehiculo_id = vehiculo.IdVehiculo)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
-                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
-                  </form>
-               
-                  
-                  <form action="{{ url_for('vehiculos_bp.eliminarVehiculo', vehiculo_id=vehiculo.IdVehiculo) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
-                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                  </form>  
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+                    <td>
+                        <form action="{{ url_for('vehiculos_bp.detalleVehiculos', vehiculo_id=vehiculo.IdVehiculo) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                        <button type="submit" class="btn btn-info btn-sm">Detalles</button>
+                    </form>
+                    
+                        <form action="{{ url_for('vehiculos_bp.actualizar_vehiculo', vehiculo_id = vehiculo.IdVehiculo)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                        <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </form>
+                
+                    
+                    <form action="{{ url_for('vehiculos_bp.eliminarVehiculo', vehiculo_id=vehiculo.IdVehiculo) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>  
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock %}

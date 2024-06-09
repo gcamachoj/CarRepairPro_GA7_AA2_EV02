@@ -16,43 +16,45 @@
         {% endfor %}
     {% endif %}
     {% endwith %}
-    <table class="table table-responsive table-striped table-hover">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Nombre</th>
-                <th>CC o NIT</th>
-                <th>Correo Electrónico</th>
-                <th>Teléfono</th>
-                <th style="width: 200px;">Accion</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for cliente in clientes %}
-            <tr>
-                <td>{{ cliente.IdCliente }}</td>
-                <td>{{ cliente.Nombre }}</td>
-                <td>{{ cliente.CC_NIT }}</td>
-                <td>{{ cliente.email }}</td>
-                <td>{{ cliente.telefono }}</td>
-                <td>
-                    <form action="{{ url_for('clientes_bp.detalleClientes', cliente_id=cliente.IdCliente) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
-                    <button type="submit" class="btn btn-info btn-sm">Detalles</button>
-                  </form>
-                  
-                  <form action="{{ url_for('clientes_bp.actualizar_cliente', cliente_id=cliente.IdCliente)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
-                   <button type="submit" class="btn btn-warning btn-sm">Editar</button>
-                  </form>
-               
-                  
-                  <form action="{{ url_for('clientes_bp.eliminarCliente', cliente_id=cliente.IdCliente) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
-                  <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
-                  </form>  
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+    <div class="table table-responsive">
+        <table class="table table-striped table-hover">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Nombre</th>
+                    <th>CC o NIT</th>
+                    <th>Correo Electrónico</th>
+                    <th>Teléfono</th>
+                    <th style="width: 200px;">Accion</th>
+                </tr>
+            </thead>
+            <tbody class>
+                {% for cliente in clientes %}
+                <tr>
+                    <td>{{ cliente.IdCliente }}</td>
+                    <td>{{ cliente.Nombre }}</td>
+                    <td>{{ cliente.CC_NIT }}</td>
+                    <td>{{ cliente.email }}</td>
+                    <td>{{ cliente.telefono }}</td>
+                    <td>
+                        <form action="{{ url_for('clientes_bp.detalleClientes', cliente_id=cliente.IdCliente) }}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                        <button type="submit" class="btn btn-info btn-sm">Detalles</button>
+                    </form>
+                    
+                    <form action="{{ url_for('clientes_bp.actualizar_cliente', cliente_id=cliente.IdCliente)}}" method="GET" style="display: inline; background-color: transparent; border: none; padding: 0;">
+                    <button type="submit" class="btn btn-warning btn-sm">Editar</button>
+                    </form>
+                
+                    
+                    <form action="{{ url_for('clientes_bp.eliminarCliente', cliente_id=cliente.IdCliente) }}" method="DELETE" style="display: inline; background-color: transparent; border: none; padding: 0">
+                    <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+                    </form>  
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
 </div>
 
 {% endblock %}
