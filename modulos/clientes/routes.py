@@ -135,3 +135,21 @@ def guardar_cliente_api():
     except Exception as e:
         db.session.rollback()  # Rollback en caso de error
         return jsonify({'error': str(e)}), 500
+    
+
+# ---API ELIMINAR CLIENTE  ----------------------------------------------------------
+
+@clientes_bp.route('/api/eliminar-cliente/<int:cliente_id>', methods=['DELETE'])
+#@login_required
+def eliminarCliente_api(cliente_id):
+    try:
+        cliente = Cliente.query.filter_by(IdCliente = cliente_id).first()
+        if cliente is None:
+            return jsonify({ 'error': 'Cliente no encontrado'}), 404
+        
+        db.session.delete(cliente)
+        db.session.commit()
+        return jsonify({'message': '¡Cliente eliminado exitosamenete!'}), 200
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'error': 'Ocurrió un error al eliminar el cliente', 'detalles': str(e)}), 500
