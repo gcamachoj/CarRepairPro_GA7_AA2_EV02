@@ -9,6 +9,13 @@ class TipoCliente(db.Model):
     TipoCliente = db.Column(db.String(45), nullable = False)
     IdEstado = db.Column(db.Integer, nullable=False)
 
+    def to_dict(self):
+        return {
+            'IdTipoCliente': self.IdTipoCliente,
+            'Descripcion': self.TipoCliente,
+            'IdEstado': self.IdEstado
+            # otros campos aquí
+        }
 
 # Creamos el modelo de datos para la tabla Cliente usando el ORM SQLAlchemy
 class Cliente(db.Model):
@@ -21,10 +28,21 @@ class Cliente(db.Model):
     Direccion = db.Column(db.String(150), nullable = False)
     email = db.Column(db.String(100), nullable = False)
     telefono = db.Column(db.String(50), nullable = False)
+    
     tipo_cliente = db.relationship('TipoCliente', backref='clientes')
     ordenes = db.relationship('Orden', backref='cliente', lazy=True) # Se relaciona Cliente con Modelo Orden para obtener los clientes con el string {{ orden.cliente.nombres }}
 
-
+    def to_dict(self):
+        return{
+            'IdCliente': self.IdCliente,
+            'IdTipoCliente': self.IdTipoCliente,
+            'CC_NIT': self.CC_NIT,
+            'Nombre': self.Nombre,
+            'IdCiudad': self.IdCiudad,
+            'Direccion': self.Direccion,
+            'email': self.email,
+            'telefono': self.telefono   
+        }
 
 class Vehiculo(db.Model):
     __tablename__ =     'vehiculos'

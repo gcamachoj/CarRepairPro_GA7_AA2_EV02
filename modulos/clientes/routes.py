@@ -1,5 +1,5 @@
 # -- Importación de librerías
-from flask import Blueprint, render_template, request, flash, redirect, url_for
+from flask import Blueprint, render_template, request, flash, redirect, url_for, jsonify
 from extensions import db  # importar servicio db para instanciar sqlalchemy y manipular los modelos de datos
 from modelos import Cliente, Ciudad, TipoCliente
 from decorators import login_required
@@ -69,7 +69,7 @@ def actualizar_cliente(cliente_id):
     if cliente:
         if request.method == 'POST':
             # Actualizar datos del cliente
-            cliente.Nombres = request.form['InputNombres']
+            cliente.Nombre = request.form['InputNombre']
             cliente.IdTipoCliente=request.form['InputIdTipoCliente']
             cliente.CC_NIT = request.form['InputCC_Nit']
             cliente.IdCiudad= request.form['InputIdCiudad']
@@ -94,3 +94,44 @@ def eliminarCliente(cliente_id):
     db.session.commit()   
     flash('¡Cliente eliminado exitosamente!', 'success')
     return redirect(url_for('clientes_bp.clientes')) 
+
+
+
+# ----- APIS CLIENTES -------------------------------------------------
+# Ruta para la API que retorna JSON
+@clientes_bp.route('/api/clientes')
+@login_required
+def clientes_api():
+    clientes = Cliente.query.all()
+    clientes_list = [cliente.to_dict() for cliente in clientes]
+    return jsonify(clientes=clientes_list)
+
+# ----- API GUARDAR CLIENTE -------------------------------------------
+
+@clientes_bp.route('/api/cliente/guardar', methods=["POST"])
+@login_required
+def guardar_cliente_api():
+    try:
+        # Obtener datos del request:
+        data = request.get_json()
+        if not data:
+            return jsonify({'error': 'No se recibieron datos'}), 400
+              
+        # Crear el nuevo cliente
+        cliente = Cliente(
+                        IdTipoCliente=data.get('InputIdTipoCliente'), 
+                        CC_NIT=data.get('InputCC_Nit'),
+                        Nombre=data.get('InputNombre'),
+                        IdCiudad=data.get('InputIdCiudad'),
+                        Direccion=data.get('InputDireccion'),
+                        email=data.get('InputEmail'),
+                        telefono=data.get('InputTelefono')
+                    )
+        db.session.add(cliente)
+        db.session.commit()
+        # Enviar respuesta exitosa
+        return jsonify({'message':'¡Cliente guardado exitosamente!', 'cliente': cliente.to_dict()}), 201
+    
+    except Exception as e:
+        db.session.rollback()  # Rollback en caso de error
+        return jsonify({'error': str(e)}), 500
