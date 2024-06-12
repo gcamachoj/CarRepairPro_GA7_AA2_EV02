@@ -99,25 +99,26 @@ def eliminarCliente(cliente_id):
 
 # ----- APIS CLIENTES -------------------------------------------------
 # Ruta para la API que retorna JSON
-@clientes_bp.route('/api/clientes')
-@login_required
-def clientes_api():
-    clientes = Cliente.query.all()
-    clientes_list = [cliente.to_dict() for cliente in clientes]
-    return jsonify(clientes=clientes_list)
+@clientes_bp.route('/api/clientes') # Se define la ruta
+@login_required # Se verifica login
+def clientes_api(): # se define el procedimiento o función
+    clientes = Cliente.query.all()  # Se crea la consulta de clientes con los datos los clientes cliente
+    clientes_list = [cliente.to_dict() for cliente in clientes] # Se encapsula en una lista la informacion
+    
+    return jsonify(clientes=clientes_list)  # Se hace uso de la libreria jsonify para convertir el listado en objeto json.
 
 # ----- API GUARDAR CLIENTE -------------------------------------------
 
-@clientes_bp.route('/api/cliente/guardar', methods=["POST"])
-@login_required
-def guardar_cliente_api():
-    try:
+@clientes_bp.route('/api/cliente/guardar', methods=["POST"])   # Definicion de la ruta 
+@login_required     # Se valida login del usuario
+def guardar_cliente_api():  # Se define la funcion
+    try:     
         # Obtener datos del request:
-        data = request.get_json()
+        data = request.get_json()   # solicita información request
         if not data:
-            return jsonify({'error': 'No se recibieron datos'}), 400
+            return jsonify({'error': 'No se recibieron datos'}), 400        # SI no hay datos genera mensaje error
               
-        # Crear el nuevo cliente
+        # Crear el nuevo cliente con los datos de la solicitud (request)
         cliente = Cliente(
                         IdTipoCliente=data.get('InputIdTipoCliente'), 
                         CC_NIT=data.get('InputCC_Nit'),
@@ -127,11 +128,13 @@ def guardar_cliente_api():
                         email=data.get('InputEmail'),
                         telefono=data.get('InputTelefono')
                     )
-        db.session.add(cliente)
-        db.session.commit()
+        db.session.add(cliente)     # Adiciona el objeto cliente a los registros de la base de datos
+        db.session.commit()         # Confirma ejecucion del comando
+        
         # Enviar respuesta exitosa
         return jsonify({'message':'¡Cliente guardado exitosamente!', 'cliente': cliente.to_dict()}), 201
-    
+
+    # Manejo de Excepciones    
     except Exception as e:
         db.session.rollback()  # Rollback en caso de error
         return jsonify({'error': str(e)}), 500
@@ -139,17 +142,18 @@ def guardar_cliente_api():
 
 # ---API ELIMINAR CLIENTE  ----------------------------------------------------------
 
-@clientes_bp.route('/api/eliminar-cliente/<int:cliente_id>', methods=['DELETE'])
+@clientes_bp.route('/api/eliminar-cliente/<int:cliente_id>', methods=['DELETE']) # Define la ruta con el parametro Id_Cliente
 #@login_required
 def eliminarCliente_api(cliente_id):
     try:
-        cliente = Cliente.query.filter_by(IdCliente = cliente_id).first()
+        cliente = Cliente.query.filter_by(IdCliente = cliente_id).first()  # Filtra el cliente pasado en la uri
         if cliente is None:
-            return jsonify({ 'error': 'Cliente no encontrado'}), 404
+            return jsonify({ 'error': 'Cliente no encontrado'}), 404  # Mensaje si el Id_Cliente no está registrado.
         
-        db.session.delete(cliente)
-        db.session.commit()
-        return jsonify({'message': '¡Cliente eliminado exitosamenete!'}), 200
-    except Exception as e:
-        db.session.rollback()
+        db.session.delete(cliente)  # Si encuentra el cliente ejecuta el comando de eliminación
+        db.session.commit()         # confirma eliminacion
+        return jsonify({'message': '¡Cliente eliminado exitosamenete!'}), 200  # Mensaje de éxito.
+    except Exception as e:          # Manejo de excepciones
+        db.session.rollback()       
         return jsonify({'error': 'Ocurrió un error al eliminar el cliente', 'detalles': str(e)}), 500
+    
