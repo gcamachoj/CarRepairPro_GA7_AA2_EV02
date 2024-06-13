@@ -69,6 +69,8 @@ donde:
 
 Una vez configurada la conexión a la base de datos puede proceder a ejecutar la aplicación con el comando **flask run** desde la terminal en la carpeta CarRepairpro_GA7_AA2_EV02.
 
+Para adicionar los datos de talbas secundarias copie el contenido del archivo rellenar_datos_prueba.txt en su editor mysql y ejecutelo.  Esto llenará las tablas de parámetros y selectores con datos de pruebas. 
+
 En caso de que quiera validar los cruds correspondientes a actividades anteriores: 
 
 ## Validación de funcionalidades CRUD: ##
