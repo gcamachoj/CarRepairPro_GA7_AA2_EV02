@@ -67,7 +67,9 @@ donde:
 
 **taller** = nombre de la base de datos
 
-Una vez configurada la conexión a la base de datos puede proceder a las validaciones de CRUDs.
+Una vez configurada la conexión a la base de datos puede proceder a ejecutar la aplicación con el comando flask run
+
+En caso de que quiera validar los cruds correspondientes a actividades anteriores: 
 
 ## Validación de funcionalidades CRUD: ##
 
