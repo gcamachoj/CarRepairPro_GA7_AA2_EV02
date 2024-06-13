@@ -67,7 +67,7 @@ donde:
 
 **taller** = nombre de la base de datos
 
-Una vez configurada la conexión a la base de datos puede proceder a ejecutar la aplicación con el comando flask run
+Una vez configurada la conexión a la base de datos puede proceder a ejecutar la aplicación con el comando **flask run** desde la terminal en la carpeta CarRepairpro_GA7_AA2_EV02.
 
 En caso de que quiera validar los cruds correspondientes a actividades anteriores: 
 
