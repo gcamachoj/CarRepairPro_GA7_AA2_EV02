@@ -47,9 +47,9 @@ Este comando creará la ruta del servidor. Ingrese dicha ruta en el explorador d
 ![Esquema base de datos](static/complementos/ESQUEMA%20RELACIONAL%20DE%20BASE%20DE%20DATOS.png)
 <figcaption>Modelo Relacional de base de datos</figcaption>
 
-7.2. Cargue la carpeta creada en el IDE "visual studio code" o el ide de su preferencia. Posteriormente Abra una terminal de linea de comando nueva en la carpeta de CarRepair_pro_crud.
+7.2. Cargue la carpeta creada en el IDE "visual studio code" o el ide de su preferencia. Posteriormente Abra una terminal de linea de comando nueva en la carpeta de CarRepairpro_GA7_AA2_EV02.
 
-8. Para la instalacion de la base de datos desacargue el archivo del script (20240324_script_creación_bd_taller_v3.sql), incluido en la carpeta static/complementos:
+8. Para la instalacion de la base de datos desacargue el archivo del script con nombre similar a (20240324_script_creación_bd_taller_v3.sql), este archivo puede variar en nombre de acuerdo a la version incluido en la carpeta static/complementos:
 
 9. Cargue el script en su aplicación de MySQL y ejecutelo. El scritp creará la base de datos "taller" con todas las tablas.  Actualice el listado de base de datos para verificar la nueva base de datos existente. Mantenga abierta la ventana de la aplicación de MySQL para validar los procedimientos CRUD.
 
